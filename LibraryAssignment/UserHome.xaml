@@ -1,0 +1,24 @@
+﻿<Window x:Class="LibraryAssignment.UserHome"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LibraryAssignment"
+        mc:Ignorable="d"
+        Title="UserHome" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+    <Grid Background="#FF71AFE4">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="66*"/>
+            <RowDefinition Height="353*"/>
+        </Grid.RowDefinitions>
+        <Button x:Name="btnCheckout" Content="Checkout" HorizontalAlignment="Left" Margin="57,113,0,190" Width="120" Grid.Row="1" MouseEnter="btnCheckout_MouseEnter" MouseLeave="btnCheckout_MouseLeave" Click="btnCheckout_Click"/>
+        <Button x:Name="btnReturn" Content="Return" HorizontalAlignment="Left" Margin="250,113,0,0" VerticalAlignment="Top" Width="120" Height="50" Grid.Row="1" MouseEnter="btnReturn_MouseEnter" MouseLeave="btnReturn_MouseLeave" />
+        <Button x:Name="btnSearch" Content="Search" HorizontalAlignment="Left" Margin="604,113,0,0" VerticalAlignment="Top" Width="120" Height="50" Grid.Row="1" MouseEnter="btnSearch_MouseEnter" MouseLeave="btnSearch_MouseLeave" Click="btnSearch_Click"/>
+        <Button x:Name="btnAccount" Content="Account" HorizontalAlignment="Left" Margin="435,113,0,0" VerticalAlignment="Top" Width="120" Height="50" Grid.Row="1" MouseEnter="btnAccount_MouseEnter" MouseLeave="btnAccount_MouseLeave" Click="btnAccount_Click"/>
+        <Image HorizontalAlignment="Left" Height="115" Margin="10,10,0,0" VerticalAlignment="Top" Width="119" Source="BookImage.png" Grid.RowSpan="2"/>
+        <Label x:Name="lblCheckout" Content="Check out Your desired book" HorizontalAlignment="Left" Margin="294,196,0,0" VerticalAlignment="Top" Width="187" Grid.Row="1" Height="26" Visibility="Hidden"/>
+        <Label x:Name="lblReturn" Content="Return your finished books" HorizontalAlignment="Left" Margin="294,196,0,0" VerticalAlignment="Top" Grid.Row="1" Height="26" Width="152" Visibility="Hidden" />
+        <Label x:Name="lblSearch" Content="Search for and reserve books" HorizontalAlignment="Left" Margin="282,196,0,0" VerticalAlignment="Top" Grid.Row="1" Height="26" Width="164" Visibility="Hidden"/>
+        <Label x:Name="lblAccount" Content="view account details, including fines and currently reserved books" HorizontalAlignment="Left" Margin="199,196,0,0" VerticalAlignment="Top" Grid.Row="1" Height="26" Width="356" Visibility="Hidden"/>
+    </Grid>
+</Window>
