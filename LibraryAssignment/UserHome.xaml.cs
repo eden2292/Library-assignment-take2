@@ -127,8 +127,14 @@ namespace LibraryAssignment
             search.Show();
         }
 
+
         #endregion
 
-
+        private void btnLogOut_Click(object sender, RoutedEventArgs e)
+        {
+            Hide();
+            MainWindow main = new MainWindow();
+            main.Show();
+        }
     }
 }
