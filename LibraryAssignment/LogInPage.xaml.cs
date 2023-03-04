@@ -28,12 +28,8 @@ namespace LibraryAssignment
 
         private String xmlUserFilePath => "UserList.xml";
         private bool AccessSuccess;
+
         
-        public String UserId
-        {
-            get { return txtUserId.Text; }
-            set { txtUserId.Text = value; }
-        }
 
         private void btnAccess_Click(object sender, RoutedEventArgs e)
         {
@@ -48,14 +44,14 @@ namespace LibraryAssignment
                 XmlNode userNo = xmlNode.SelectSingleNode("UserID");
 
                 //If the User ID matches a node in the XML file, check the tag node. 
-                if (UserId == userNo.InnerText)
+                if (txtUserId.Text == userNo.InnerText)
                 {
                     XmlNode tag = xmlNode.SelectSingleNode("Tag");
 
                     //switch to landing page based on the "tag" node. 
                     if (tag.InnerText == "Staff")
                     {
-                        this.Hide();
+                        Hide();
                         StaffHome staffHome = new StaffHome();
                         staffHome.Show();
                         AccessSuccess = true;
@@ -63,7 +59,7 @@ namespace LibraryAssignment
                     }
                     else if (tag.InnerText == "Member")
                     {
-                        this.Hide();
+                        Hide();
                         UserHome userHome = new UserHome();
                         userHome.Show();
                         AccessSuccess = true;

@@ -25,7 +25,7 @@ namespace LibraryAssignment
         }
         private void btnLogOut_Click(object sender, RoutedEventArgs e)
         {
-            Hide();
+            Close();
             MainWindow main = new MainWindow();
             main.Show();
         }

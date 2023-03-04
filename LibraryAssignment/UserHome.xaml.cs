@@ -101,28 +101,28 @@ namespace LibraryAssignment
 
         private void btnCheckout_Click(object sender, RoutedEventArgs e)
         {
-            Hide();
+            Close();
             Checkout checkout = new Checkout();
             checkout.Show();
         }
 
         private void btnReturn_Click(object sender, RoutedEventArgs e)
         {
-            Hide();
+            Close();
             BookReturn bookreturn = new BookReturn();
             bookreturn.Show();
         }
 
         private void btnAccount_Click(object sender, RoutedEventArgs e)
         {
-            Hide();
+            Close();
             Account account = new Account();
             account.Show();
         }
 
         private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
-            Hide();
+            Close();
             Search search = new Search();
             search.Show();
         }
@@ -132,7 +132,7 @@ namespace LibraryAssignment
 
         private void btnLogOut_Click(object sender, RoutedEventArgs e)
         {
-            Hide();
+            Close();
             MainWindow main = new MainWindow();
             main.Show();
         }

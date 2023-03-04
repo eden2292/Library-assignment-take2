@@ -24,17 +24,14 @@ namespace LibraryAssignment
         public Account()
         {
             InitializeComponent();
-
-            //DataSet dataset = new DataSet();
-            //dataset.ReadXml(@"UserList.xml");
-            //dgUserInfo.ItemsSource = dataset.Tables[0].DefaultView;
-
         }
+
+     
 
         private String xmlUserFilePath => "UserList.xml";
         private void btnLogOut_Click(object sender, RoutedEventArgs e)
         {
-            Hide();
+            Close();
             MainWindow main = new MainWindow();
             main.Show();
         }
@@ -49,10 +46,10 @@ namespace LibraryAssignment
             {
                 XmlNode userNo = xmlNode.SelectSingleNode("UserID");
 
-                if(MainWindow.UserID == userNo.InnerText)
-                {
+                //if(MainWindow.UserID == userNo.InnerText)
+                //{
 
-                }
+                //}
             }
         }
     }
