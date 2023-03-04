@@ -21,5 +21,6 @@
         <Label x:Name="lblSearch" Content="Search for and reserve books" HorizontalAlignment="Left" Margin="282,196,0,0" VerticalAlignment="Top" Grid.Row="1" Height="26" Width="164" Visibility="Hidden"/>
         <Label x:Name="lblAccount" Content="view account details, including fines and currently reserved books" HorizontalAlignment="Left" Margin="199,196,0,0" VerticalAlignment="Top" Grid.Row="1" Height="26" Width="356" Visibility="Hidden"/>
         <Button x:Name="btnLogOut" Content="Log out" Margin="336,248,336,0" Grid.Row="1" VerticalAlignment="Top" Height="50" Click="btnLogOut_Click"/>
+        <TextBlock x:Name="tbUserTitle" Margin="209,0,182,0" TextWrapping="Wrap" Text="Your Library" VerticalAlignment="Top" FontFamily="Global User Interface" FontSize="72" Foreground="White" Grid.Row="1"/>
     </Grid>
 </Window>
