@@ -28,6 +28,12 @@ namespace LibraryAssignment
 
         private String xmlUserFilePath => "UserList.xml";
         private bool AccessSuccess;
+        
+        public String UserId
+        {
+            get { return txtUserId.Text; }
+            set { txtUserId.Text = value; }
+        }
 
         private void btnAccess_Click(object sender, RoutedEventArgs e)
         {
@@ -42,7 +48,7 @@ namespace LibraryAssignment
                 XmlNode userNo = xmlNode.SelectSingleNode("UserID");
 
                 //If the User ID matches a node in the XML file, check the tag node. 
-                if (txtUserId.Text == userNo.InnerText)
+                if (UserId == userNo.InnerText)
                 {
                     XmlNode tag = xmlNode.SelectSingleNode("Tag");
 

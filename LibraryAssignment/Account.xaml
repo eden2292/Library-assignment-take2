@@ -6,7 +6,18 @@
         xmlns:local="clr-namespace:LibraryAssignment"
         mc:Ignorable="d"
         Title="Account" Height="450" Width="800"  WindowStartupLocation="CenterScreen">
-    <Grid Background="#FF71AFE4">
-        
+    <Grid Background="#FF71AFE4" Initialized="Grid_Initialized">
+        <Button x:Name="btnLogOut" Content="Log out" Margin="336,314,336,0" VerticalAlignment="Top" Height="50" Click="btnLogOut_Click"/>
+        <TextBox x:Name="txtName" HorizontalAlignment="Left" Height="23" Margin="320,77,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" FontSize="20" FontFamily="Global User Interface"/>
+        <TextBox x:Name="txtPhone" HorizontalAlignment="Left" Height="23" Margin="320,119,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" FontSize="20" FontFamily="Global User Interface"/>
+        <TextBox x:Name="txtEmail" HorizontalAlignment="Left" Height="23" Margin="320,161,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" FontSize="20" FontFamily="Global User Interface"/>
+        <TextBox x:Name="txtBooksCheckedOut" HorizontalAlignment="Left" Height="23" Margin="320,201,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" FontSize="20" FontFamily="Global User Interface"/>
+        <TextBox x:Name="txtFines" HorizontalAlignment="Left" Height="23" Margin="320,242,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" FontSize="20" FontFamily="Global User Interface"/>
+        <TextBlock HorizontalAlignment="Left" Margin="258,77,0,0" TextWrapping="Wrap" Text="Name:" VerticalAlignment="Top" Height="23" FontSize="20" FontFamily="Global User Interface" Foreground="White" />
+        <TextBlock HorizontalAlignment="Left" Margin="220,119,0,0" TextWrapping="Wrap" Text="Telephone:" VerticalAlignment="Top" Height="23" FontSize="20" FontFamily="Global User Interface" Foreground="White"/>
+        <TextBlock HorizontalAlignment="Left" Margin="264,161,0,0" TextWrapping="Wrap" Text="Email:" VerticalAlignment="Top" Height="23" FontSize="20" FontFamily="Global User Interface" Foreground="White"/>
+        <TextBlock HorizontalAlignment="Left" Margin="186,201,0,0" TextWrapping="Wrap" Text="Books on loan:" VerticalAlignment="Top" Height="23" FontSize="20" FontFamily="Global User Interface" Foreground="White"/>
+        <TextBlock HorizontalAlignment="Left" Margin="154,242,0,0" TextWrapping="Wrap" Text="Outstanding fines:" VerticalAlignment="Top" Height="23" FontSize="20" FontFamily="Global User Interface" Foreground="White"/>
+
     </Grid>
 </Window>
