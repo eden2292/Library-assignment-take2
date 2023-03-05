@@ -7,6 +7,8 @@
         mc:Ignorable="d"
         Title="Search" Height="450" Width="800"  WindowStartupLocation="CenterScreen">
     <Grid Background="#FF71AFE4">
-        
+        <TextBox x:Name="txtSearchResults" Margin="195,137,198,145" TextWrapping="Wrap" Text="Search Results..." FontFamily="Global User Interface" FontSize="18" IsEnabled="False" SelectionOpacity="1"/>
+        <TextBlock Margin="284,27,283,0" TextWrapping="Wrap" Text="Search" VerticalAlignment="Top" FontFamily="Global User Interface" FontSize="72" Foreground="White"/>
+
     </Grid>
 </Window>

@@ -42,15 +42,6 @@ namespace LibraryAssignment
             xmlDocument.Load(xmlUserFilePath);
             XmlNodeList xmlNodeList = xmlDocument.DocumentElement.SelectNodes("/catalog/User");
 
-            foreach(XmlNode xmlNode in xmlNodeList)
-            {
-                XmlNode userNo = xmlNode.SelectSingleNode("UserID");
-
-                //if(MainWindow.UserID == userNo.InnerText)
-                //{
-
-                //}
-            }
         }
     }
 }

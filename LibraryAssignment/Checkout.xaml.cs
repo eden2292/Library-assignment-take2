@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Xml;
 
 namespace LibraryAssignment
 {
@@ -22,6 +23,44 @@ namespace LibraryAssignment
         public Checkout()
         {
             InitializeComponent();
+        }
+
+        private String xmlBookFilePath => "LibraryInventory.xml";
+        private DateTime dueDate = DateTime.Now.AddMonths(1);
+
+
+        private void txtCheckoutBookId_GotFocus(object sender, RoutedEventArgs e)
+        {
+            txtCheckoutBookId.Clear();
+        }
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+            MainWindow main = new MainWindow();
+            main.Show();
+        }
+
+        private void btnCheckoutBook_Click(object sender, RoutedEventArgs e)
+        {
+            XmlDocument xmlDocument = new XmlDocument();
+            xmlDocument.Load(xmlBookFilePath);
+            XmlNodeList xmlNodeList = xmlDocument.DocumentElement.SelectNodes("/catalog/book");
+
+            foreach (XmlNode xmlNode in xmlNodeList)
+            {
+                XmlNode bookId = xmlNode.SelectSingleNode("bookId");
+
+                if (txtCheckoutBookId.Text == bookId.InnerText)
+                {
+                    XmlNode newElem = xmlDocument.CreateNode("element", "checkedOut", "");
+                    newElem.InnerText = Convert.ToString(dueDate);
+                    XmlElement root = xmlDocument.DocumentElement;
+                    root.AppendChild(newElem);
+                    MessageBox.Show($"Your due date is {Convert.ToString(dueDate)}");
+                    xmlDocument.Save(xmlBookFilePath);
+                }
+            }
         }
     }
 }
