@@ -19,8 +19,11 @@ namespace LibraryAssignment
     /// </summary>
     public partial class UserHome : Window
     {
-        public UserHome()
+        private PramStore _pramStore;
+
+        public UserHome(PramStore pramStore)
         {
+            _pramStore = pramStore;
             InitializeComponent();
         }
 
@@ -116,7 +119,7 @@ namespace LibraryAssignment
         private void btnAccount_Click(object sender, RoutedEventArgs e)
         {
             Close();
-            Account account = new Account();
+            Account account = new Account(_pramStore);
             account.Show();
         }
 

@@ -21,12 +21,17 @@ namespace LibraryAssignment
     /// </summary>
     public partial class Account : Window
     {
-        public Account()
-        {
-            InitializeComponent();
-        }
+        private readonly PramStore _pramStore;
 
-     
+        public Account(PramStore pramStore)
+        {
+            _pramStore = pramStore;
+            InitializeComponent();
+
+            txtEmail.Text = _pramStore.CurrentUser.UserEmail;
+            txtName.Text = _pramStore.CurrentUser.UserName;
+            txtPhone.Text = _pramStore.CurrentUser.UserPhone;
+        }
 
         private String xmlUserFilePath => "UserList.xml";
         private void btnLogOut_Click(object sender, RoutedEventArgs e)

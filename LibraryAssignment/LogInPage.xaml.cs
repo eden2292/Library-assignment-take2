@@ -21,15 +21,15 @@ namespace LibraryAssignment
     /// </summary>
     public partial class MainWindow : Window
     {
+        private PramStore _pramStore;
         public MainWindow()
         {
+            _pramStore = new PramStore();
             InitializeComponent();
         }
 
         private String xmlUserFilePath => "UserList.xml";
         private bool AccessSuccess;
-
-        
 
         private void btnAccess_Click(object sender, RoutedEventArgs e)
         {
@@ -41,32 +41,39 @@ namespace LibraryAssignment
             //loop through each node in the XML file and check against "User ID"
             foreach (XmlNode xmlNode in xmlNodeList)
             {
-                XmlNode userNo = xmlNode.SelectSingleNode("UserID");
-
+                XmlNode id = xmlNode.SelectSingleNode("UserID");
                 //If the User ID matches a node in the XML file, check the tag node. 
-                if (txtUserId.Text == userNo.InnerText)
+                if (txtUserId.Text == id.InnerText)
                 {
                     XmlNode tag = xmlNode.SelectSingleNode("Tag");
 
+                    _pramStore.CurrentUser = new UserDetails
+                    {
+                        UserName = xmlNode.SelectSingleNode("Name").InnerText,
+                        UserPhone = xmlNode.SelectSingleNode("Telephone").InnerText,
+                        UserEmail = xmlNode.SelectSingleNode("Email").InnerText,
+                        UserId = id.InnerText,
+                        UserTag = tag.InnerText,
+                        UserNoBooks = 0
+                    };
+                    
                     //switch to landing page based on the "tag" node. 
                     if (tag.InnerText == "Staff")
                     {
                         Hide();
                         StaffHome staffHome = new StaffHome();
                         staffHome.Show();
-                        AccessSuccess = true;
-
                     }
                     else if (tag.InnerText == "Member")
                     {
                         Hide();
-                        UserHome userHome = new UserHome();
+                        UserHome userHome = new UserHome(_pramStore);
                         userHome.Show();
                         AccessSuccess = true;
                     }
                 }
-
             }
+
             //If previously instantiated bool has not changed value to "true", a message box shows. 
             if (AccessSuccess != true)
             {

@@ -27,7 +27,7 @@ namespace LibraryAssignment
 
         private String xmlBookFilePath => "LibraryInventory.xml";
         private String xmlUserFilePath => "UserList.xml";
-        private DateTime dueDate = DateTime.Now.AddMonths(1);
+        private string dueDate = DateTime.Now.AddMonths(1).ToShortDateString();
 
 
         private void txtCheckoutBookId_GotFocus(object sender, RoutedEventArgs e)
@@ -48,7 +48,7 @@ namespace LibraryAssignment
             xmlDocument.Load(xmlBookFilePath);
             XmlDocument xmlDocUser = new XmlDocument();
             xmlDocUser.Load(xmlUserFilePath);
-            XmlNodeList xmlNodeList = xmlDocument.DocumentElement.SelectNodes("/catalog/book");
+            XmlNodeList xmlNodeList = xmlDocument.DocumentElement.SelectNodes("/library/book");
 
             foreach (XmlNode xmlNode in xmlNodeList)
             {
@@ -57,11 +57,10 @@ namespace LibraryAssignment
                 if (txtCheckoutBookId.Text == bookId.InnerText)
                 {
                     XmlNode newElem = xmlDocument.CreateNode("element", "checkedOut", "");
-                    newElem.InnerText = Convert.ToString(dueDate);
-                    XmlElement root = xmlDocument.DocumentElement;
-                    root.AppendChild(newElem);
-                    MessageBox.Show($"Your due date is {Convert.ToString(dueDate)}");
-                    xmlDocument.Save(xmlBookFilePath);
+                    newElem.InnerText = dueDate;
+                    xmlNode.AppendChild(newElem);
+                    xmlNode.OwnerDocument.Save(xmlBookFilePath);
+                    MessageBox.Show($"Your due date is {dueDate}");
                 }
             }
         }
