@@ -26,6 +26,7 @@ namespace LibraryAssignment
         }
 
         private String xmlBookFilePath => "LibraryInventory.xml";
+        private String xmlUserFilePath => "UserList.xml";
         private DateTime dueDate = DateTime.Now.AddMonths(1);
 
 
@@ -45,6 +46,8 @@ namespace LibraryAssignment
         {
             XmlDocument xmlDocument = new XmlDocument();
             xmlDocument.Load(xmlBookFilePath);
+            XmlDocument xmlDocUser = new XmlDocument();
+            xmlDocUser.Load(xmlUserFilePath);
             XmlNodeList xmlNodeList = xmlDocument.DocumentElement.SelectNodes("/catalog/book");
 
             foreach (XmlNode xmlNode in xmlNodeList)
