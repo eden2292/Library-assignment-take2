@@ -1,16 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using System.Xml;
 
 namespace LibraryAssignment
@@ -20,9 +9,15 @@ namespace LibraryAssignment
     /// </summary>
     public partial class Checkout : Window
     {
-        public Checkout()
+
+        private readonly PramStore _pramStore;
+        public String currentUserId;
+        public Checkout(PramStore pramStore)
         {
+            _pramStore = pramStore;
             InitializeComponent();
+            currentUserId = _pramStore.CurrentUser.UserId;
+
         }
 
         private String xmlBookFilePath => "LibraryInventory.xml";
@@ -50,18 +45,43 @@ namespace LibraryAssignment
             xmlDocUser.Load(xmlUserFilePath);
             XmlNodeList xmlNodeList = xmlDocument.DocumentElement.SelectNodes("/library/book");
 
+            bool bookFound = false;
+            bool bookAvailable = false;
+
             foreach (XmlNode xmlNode in xmlNodeList)
             {
                 XmlNode bookId = xmlNode.SelectSingleNode("bookId");
+                XmlNode checkedOut = xmlNode.SelectSingleNode("checkedOut");
+                XmlNode currentUser;
 
                 if (txtCheckoutBookId.Text == bookId.InnerText)
                 {
-                    XmlNode newElem = xmlDocument.CreateNode("element", "checkedOut", "");
+                    XmlElement newElem = xmlDocument.CreateElement ("checkedOut");
                     newElem.InnerText = dueDate;
                     xmlNode.AppendChild(newElem);
                     xmlNode.OwnerDocument.Save(xmlBookFilePath);
                     MessageBox.Show($"Your due date is {dueDate}");
+                    bookFound = true;
+                    bookAvailable = true;
+                    
                 }
+                else if(txtCheckoutBookId.Text == bookId.InnerText && checkedOut != null)
+                {
+                    
+                    bookFound = true;
+                    
+                }
+
+                if (!bookFound && !bookAvailable)
+                {
+                    MessageBox.Show("This book is not recognised \n please contact the librarian");
+                    
+                }
+                else if(bookFound == true && !bookAvailable)
+                {
+                    MessageBox.Show("This book cannot currently be checked out \n please contact the librarian");
+                }
+                
             }
         }
     }

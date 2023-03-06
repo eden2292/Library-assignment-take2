@@ -105,7 +105,7 @@ namespace LibraryAssignment
         private void btnCheckout_Click(object sender, RoutedEventArgs e)
         {
             Close();
-            Checkout checkout = new Checkout();
+            Checkout checkout = new Checkout(_pramStore);
             checkout.Show();
         }
 
