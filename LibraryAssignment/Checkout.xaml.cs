@@ -38,8 +38,8 @@ namespace LibraryAssignment
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             Close();
-            MainWindow main = new MainWindow();
-            main.Show();
+            UserHome home = new UserHome(_pramStore);
+            home.Show();
         }
 
         private void btnCheckoutBook_Click(object sender, RoutedEventArgs e)

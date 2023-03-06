@@ -1,17 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using System.Xml;
 
 namespace LibraryAssignment
@@ -37,8 +25,8 @@ namespace LibraryAssignment
         private void btnLogOut_Click(object sender, RoutedEventArgs e)
         {
             Close();
-            MainWindow main = new MainWindow();
-            main.Show();
+            UserHome home = new UserHome(_pramStore);
+            home.Show();
         }
 
         private void Grid_Initialized(object sender, EventArgs e)
