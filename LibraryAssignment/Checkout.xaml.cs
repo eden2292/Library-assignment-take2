@@ -12,11 +12,16 @@ namespace LibraryAssignment
 
         private readonly PramStore _pramStore;
         public String currentUserId;
+        public String currentUserBooks;
+        public int currentUserNoOfBooks;
         public Checkout(PramStore pramStore)
         {
             _pramStore = pramStore;
             InitializeComponent();
             currentUserId = _pramStore.CurrentUser.UserId;
+            currentUserBooks = _pramStore.CurrentUser.UserBooks;
+            currentUserNoOfBooks = _pramStore.CurrentUser.UserNoBooks;
+
 
         }
 
@@ -41,8 +46,10 @@ namespace LibraryAssignment
         {
             XmlDocument xmlDocument = new XmlDocument();
             xmlDocument.Load(xmlBookFilePath);
+
             XmlDocument xmlDocUser = new XmlDocument();
             xmlDocUser.Load(xmlUserFilePath);
+
             XmlNodeList xmlNodeList = xmlDocument.DocumentElement.SelectNodes("/library/book");
 
             bool bookFound = false;
@@ -52,25 +59,34 @@ namespace LibraryAssignment
             {
                 XmlNode bookId = xmlNode.SelectSingleNode("bookId");
                 XmlNode checkedOut = xmlNode.SelectSingleNode("checkedOut");
-                XmlNode currentUser;
+                String title = Convert.ToString(xmlNode.SelectSingleNode("title"));
+                //XmlNode currentUser = xmlNode.SelectSingleNode("UserId");
 
-                if (txtCheckoutBookId.Text == bookId.InnerText)
+                if (txtCheckoutBookId.Text == bookId.InnerText && checkedOut == null)
                 {
-                    XmlElement newElem = xmlDocument.CreateElement ("checkedOut");
+                    XmlElement newElem = xmlDocument.CreateElement("checkedOut");
                     newElem.InnerText = dueDate;
+
                     xmlNode.AppendChild(newElem);
                     xmlNode.OwnerDocument.Save(xmlBookFilePath);
+
+                    XmlNode oldCheckedOutBooks = xmlDocUser.SelectSingleNode("//User[CheckedOutBooks]");
+                    oldCheckedOutBooks.ChildNodes.Item(4).InnerText += title;
+                    xmlDocUser.Save(xmlUserFilePath);
+
                     MessageBox.Show($"Your due date is {dueDate}");
                     bookFound = true;
                     bookAvailable = true;
-                    
+
                 }
-                else if(txtCheckoutBookId.Text == bookId.InnerText && checkedOut != null)
+                else if (txtCheckoutBookId.Text == bookId.InnerText && checkedOut != null)
                 {
-                    
+
                     bookFound = true;
-                    
+
                 }
+
+            }
 
                 if (!bookFound && !bookAvailable)
                 {
@@ -82,7 +98,7 @@ namespace LibraryAssignment
                     MessageBox.Show("This book cannot currently be checked out \n please contact the librarian");
                 }
                 
-            }
+            
         }
     }
 }
