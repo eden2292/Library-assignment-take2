@@ -15,8 +15,6 @@ namespace LibraryAssignment
         public String UserId { get; set; }
         public String UserTag { get; set; }
         public String UserBooks { get; set; }
-        public int UserNoBooks { get; set; }
-
-
+        
     }
 }

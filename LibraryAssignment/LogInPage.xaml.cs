@@ -54,9 +54,8 @@ namespace LibraryAssignment
                         UserEmail = xmlNode.SelectSingleNode("Email").InnerText,
                         UserId = id.InnerText,
                         UserTag = tag.InnerText,
-                        UserNoBooks = 0
                     };
-                    
+
                     //switch to landing page based on the "tag" node. 
                     if (tag.InnerText == "Staff")
                     {
