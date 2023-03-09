@@ -28,13 +28,5 @@ namespace LibraryAssignment
             UserHome home = new UserHome(_pramStore);
             home.Show();
         }
-
-        private void Grid_Initialized(object sender, EventArgs e)
-        {
-            XmlDocument xmlDocument = new XmlDocument();
-            xmlDocument.Load(xmlUserFilePath);
-            XmlNodeList xmlNodeList = xmlDocument.DocumentElement.SelectNodes("/catalog/User");
-
-        }
     }
 }

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:LibraryAssignment"
         mc:Ignorable="d"
         Title="Account" Height="450" Width="800"  WindowStartupLocation="CenterScreen">
-    <Grid Background="#FF71AFE4" Initialized="Grid_Initialized">
+    <Grid Background="#FF71AFE4">
         <Button x:Name="btnCancel" Content="Cancel" Margin="619,161,53,0" VerticalAlignment="Top" Height="50" Click="btnLogOut_Click"/>
         <TextBox x:Name="txtName" HorizontalAlignment="Left" Height="23" Margin="320,77,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="241" FontSize="20" FontFamily="Global User Interface"/>
         <TextBox x:Name="txtPhone" HorizontalAlignment="Left" Height="23" Margin="320,119,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="241" FontSize="20" FontFamily="Global User Interface"/>
