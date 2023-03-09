@@ -47,9 +47,9 @@ namespace LibraryAssignment
 
                 if(txtReturn.Text == bookId.InnerText)
                 {
-                    XmlNode root = book.SelectSingleNode("book");
-                    XmlNode checkedOut = book.SelectSingleNode("/book/checkedOut");
-                    root.RemoveChild(checkedOut);
+                   
+                    XmlNode checkedOut = book.SelectSingleNode("checkedOut");
+                    book.RemoveChild(checkedOut);
                     xmlDocument.Save(xmlBookFilePath);
  
                 }
