@@ -12,6 +12,7 @@ namespace LibraryAssignment
         private readonly PramStore _pramStore;
         public String currentUserId;
         public String currentUserBooks;
+        public String title;
 
         private String xmlBookFilePath => "LibraryInventory.xml";
         private String xmlUserFilePath => "UserList.xml";
@@ -36,25 +37,43 @@ namespace LibraryAssignment
             XmlDocument xmlDocument = new XmlDocument();
             xmlDocument.Load(xmlBookFilePath);
 
+            XmlDocument userDocument = new XmlDocument();
+            userDocument.Load(xmlUserFilePath);
+
             XmlNodeList bookNodes = xmlDocument.DocumentElement.SelectNodes("/library/book");
+            XmlNodeList userNodes = userDocument.DocumentElement.SelectNodes("/catalog/User");
+
 
             //bool bookFound = false;
 
-            foreach(XmlNode book in bookNodes)
+            foreach (XmlNode book in bookNodes)
             {
-                
+
                 XmlNode bookId = book.SelectSingleNode("bookId");
 
-                if(txtReturn.Text == bookId.InnerText)
+                if (txtReturn.Text == bookId.InnerText)
                 {
-                   
+
                     XmlNode checkedOut = book.SelectSingleNode("checkedOut");
+                    title = book.SelectSingleNode("title").InnerText;
                     book.RemoveChild(checkedOut);
-                    xmlDocument.Save(xmlBookFilePath);
- 
+
                 }
-}
+            }
+
+            foreach (XmlNode user in userNodes)
+            {
+                XmlNode bookTitle = user.SelectSingleNode("/catalog/User/CheckedOut/BookTitle");
+
+                if(bookTitle.InnerText == title)
+                {
+                    bookTitle.ParentNode.RemoveChild(bookTitle);
+                }
+
+            }
+            xmlDocument.Save(xmlBookFilePath);
+            userDocument.Save(xmlUserFilePath);
+        }
 
         }
     }
-}
