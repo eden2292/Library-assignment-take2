@@ -19,6 +19,7 @@ namespace LibraryAssignment
             txtEmail.Text = _pramStore.CurrentUser.UserEmail;
             txtName.Text = _pramStore.CurrentUser.UserName;
             txtPhone.Text = _pramStore.CurrentUser.UserPhone;
+            txtBooksCheckedOut.Text = _pramStore.CurrentUser.UserBooks;
         }
 
         private String xmlUserFilePath => "UserList.xml";

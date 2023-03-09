@@ -52,6 +52,7 @@ namespace LibraryAssignment
                         UserName = xmlNode.SelectSingleNode("Name").InnerText,
                         UserPhone = xmlNode.SelectSingleNode("Telephone").InnerText,
                         UserEmail = xmlNode.SelectSingleNode("Email").InnerText,
+                        UserBooks = xmlNode.SelectSingleNode("CheckedOut").InnerText,
                         UserId = id.InnerText,
                         UserTag = tag.InnerText,
                     };

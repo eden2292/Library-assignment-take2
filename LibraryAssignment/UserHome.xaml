@@ -12,7 +12,7 @@
             <RowDefinition Height="353*"/>
         </Grid.RowDefinitions>
         <Button x:Name="btnCheckout" Content="Checkout" HorizontalAlignment="Left" Margin="57,113,0,190" Width="120" Grid.Row="1" MouseEnter="btnCheckout_MouseEnter" MouseLeave="btnCheckout_MouseLeave" Click="btnCheckout_Click"/>
-        <Button x:Name="btnReturn" Content="Return" HorizontalAlignment="Left" Margin="250,113,0,0" VerticalAlignment="Top" Width="120" Height="50" Grid.Row="1" MouseEnter="btnReturn_MouseEnter" MouseLeave="btnReturn_MouseLeave" />
+        <Button x:Name="btnReturn" Content="Return" HorizontalAlignment="Left" Margin="250,113,0,0" VerticalAlignment="Top" Width="120" Height="50" Grid.Row="1" MouseEnter="btnReturn_MouseEnter" MouseLeave="btnReturn_MouseLeave" Click="btnReturn_Click" />
         <Button x:Name="btnSearch" Content="Search" HorizontalAlignment="Left" Margin="604,113,0,0" VerticalAlignment="Top" Width="120" Height="50" Grid.Row="1" MouseEnter="btnSearch_MouseEnter" MouseLeave="btnSearch_MouseLeave" Click="btnSearch_Click"/>
         <Button x:Name="btnAccount" Content="Account" HorizontalAlignment="Left" Margin="435,113,0,0" VerticalAlignment="Top" Width="120" Height="50" Grid.Row="1" MouseEnter="btnAccount_MouseEnter" MouseLeave="btnAccount_MouseLeave" Click="btnAccount_Click"/>
         <Image HorizontalAlignment="Left" Height="115" Margin="10,10,0,0" VerticalAlignment="Top" Width="119" Source="BookImage.png" Grid.RowSpan="2"/>

@@ -10,7 +10,7 @@
         <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="508,285,0,0" VerticalAlignment="Top" Width="120" Height="50" Click="btnCancel_Click"/>
         <TextBlock Margin="285,78,286,0" TextWrapping="Wrap" Text="Return" VerticalAlignment="Top" Height="76" FontFamily="Global User Interface" FontSize="72" Foreground="White"/>
         <TextBox x:Name="txtReturn" Height="31" Margin="317,180,318,0" TextWrapping="Wrap" Text="Book ID number" VerticalAlignment="Top" FontFamily="Global User Interface" FontSize="20" Foreground="Black"/>
-        <Button x:Name="btnReturn" Content="Return" Margin="336,285,336,0" VerticalAlignment="Top" Height="50"/>
+        <Button x:Name="btnReturn" Content="Return" Margin="336,285,336,0" VerticalAlignment="Top" Height="50" Click="btnReturn_Click"/>
         <Image HorizontalAlignment="Left" Height="115" Margin="10,10,0,0" VerticalAlignment="Top" Width="119" Source="BookImage.png"/>
         <Button x:Name="btnRenew" Content="Renew" HorizontalAlignment="Left" Margin="160,285,0,0" VerticalAlignment="Top" Width="120" Height="50"/>
 
