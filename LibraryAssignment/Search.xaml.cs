@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,9 +20,36 @@ namespace LibraryAssignment
     /// </summary>
     public partial class Search : Window
     {
+        private readonly PramStore _pramStore;
+        private String xmlBookFilePath => "LibraryInventory.xml";
         public Search()
         {
             InitializeComponent();
+
+            DataSet dataSet = new DataSet();
+            //Read the xml file into the dataset
+            dataSet.ReadXml(xmlBookFilePath);
+            //get the source for the data
+            dgResults.ItemsSource = dataSet.Tables[0].DefaultView;
+        }
+
+        private void btnSearch_Click(object sender, RoutedEventArgs e)
+        {
+
+            List<DataSet> searchResults = new List<DataSet>();
+            
+            string authorSearch = txtSearchAuth.Text;
+            string genreSearch = txtSearchGenre.Text;
+            string titleSearch = txtSearchTitle.Text;
+
+            
+        }
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+            UserHome home = new UserHome(_pramStore);
+            home.Show();
         }
     }
 }

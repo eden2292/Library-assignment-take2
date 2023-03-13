@@ -13,6 +13,7 @@ namespace LibraryAssignment
         public String currentUserId;
         public String currentUserBooks;
         public String title;
+        bool bookFound = false;
 
         private String xmlBookFilePath => "LibraryInventory.xml";
         private String xmlUserFilePath => "UserList.xml";
@@ -51,8 +52,6 @@ namespace LibraryAssignment
             XmlNodeList userNodes = userDocument.DocumentElement.SelectNodes("/catalog/User");
 
 
-            //bool bookFound = false;
-
             foreach (XmlNode book in bookNodes)
             {
 
@@ -64,7 +63,14 @@ namespace LibraryAssignment
                     XmlNode checkedOut = book.SelectSingleNode("checkedOut");
                     title = book.SelectSingleNode("title").InnerText;
                     book.RemoveChild(checkedOut);
+                    MessageBox.Show("Successfully returned!");
+                    bookFound = true;
 
+                }
+                
+                if(!bookFound)
+                {
+                    MessageBox.Show("An error has occured \n please contact the librarian");
                 }
             }
 
@@ -100,12 +106,16 @@ namespace LibraryAssignment
                 if (txtReturn.Text == bookId.InnerText)
                 {
 
-                    XmlNode checkedOut = book.SelectSingleNode("checkedOut");
-                    //title = book.SelectSingleNode("title").InnerText;
-                    XmlNode dueDate("<checkedOut>" + newDate + "</checkedOut>");
-                    book.ReplaceChild(dueDate, checkedOut);
+                    book.SelectSingleNode("checkedOut").InnerText = newDate;
+                    MessageBox.Show($"Your new due date is \n {newDate}");
+                    bookFound = true;
 
                 }
+                if(!bookFound)
+                {
+                    MessageBox.Show("An error has occured \n please contact the librarian");
+                }
+                xmlDocument.Save(xmlBookFilePath);
             }
         }
     }
