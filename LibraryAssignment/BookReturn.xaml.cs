@@ -67,11 +67,10 @@ namespace LibraryAssignment
                     bookFound = true;
 
                 }
-                
-                if(!bookFound)
-                {
-                    MessageBox.Show("An error has occured \n please contact the librarian");
-                }
+            }
+            if (bookFound == false)
+            {
+                MessageBox.Show("An error has occured \n please contact the librarian");
             }
 
             foreach (XmlNode user in userNodes)

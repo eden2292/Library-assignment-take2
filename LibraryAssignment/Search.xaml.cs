@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -33,14 +34,13 @@ namespace LibraryAssignment
             dgResults.ItemsSource = dataSet.Tables[0].DefaultView;
         }
 
+      
+
         private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
 
-            List<DataSet> searchResults = new List<DataSet>();
             
-            string authorSearch = txtSearchAuth.Text;
-            string genreSearch = txtSearchGenre.Text;
-            string titleSearch = txtSearchTitle.Text;
+
 
             
         }

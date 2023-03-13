@@ -77,7 +77,10 @@ namespace LibraryAssignment
                         if (_pramStore.CurrentUser.UserId == user.SelectSingleNode("UserID").InnerText)
                         {
                             XmlElement newBookElem = xmlDocUser.CreateElement("BookTitle");
+                            XmlElement dueDateElem = xmlDocUser.CreateElement("DueDate");
                             newBookElem.InnerText = xmlNode.SelectSingleNode("title").InnerText;
+                            dueDateElem.InnerText = xmlNode.SelectSingleNode("checkedOut").InnerText;
+                            
   
                             user.SelectSingleNode("CheckedOut").AppendChild(newBookElem);
                             user.OwnerDocument.Save(xmlUserFilePath);
