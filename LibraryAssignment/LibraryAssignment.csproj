@@ -59,6 +59,9 @@
       <DependentUpon>Account.xaml</DependentUpon>
     </Compile>
     <Compile Include="BookDetails.cs" />
+    <Compile Include="BookManage.xaml.cs">
+      <DependentUpon>BookManage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="BookReturn.xaml.cs">
       <DependentUpon>BookReturn.xaml</DependentUpon>
     </Compile>
@@ -77,6 +80,10 @@
       <DependentUpon>UserHome.xaml</DependentUpon>
     </Compile>
     <Page Include="Account.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BookManage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

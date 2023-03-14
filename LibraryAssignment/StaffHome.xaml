@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="StaffHome" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid Background="#FF71AFE4">
-        <Button x:Name="btnManageBooks" Content="Manage Books" HorizontalAlignment="Left" Margin="182,160,0,0" VerticalAlignment="Top" Width="120" Height="50"  MouseEnter="btnManageBooks_MouseEnter" MouseLeave="btnManageBooks_MouseLeave"/>
+        <Button x:Name="btnManageBooks" Content="Manage Books" HorizontalAlignment="Left" Margin="182,160,0,0" VerticalAlignment="Top" Width="120" Height="50"  MouseEnter="btnManageBooks_MouseEnter" MouseLeave="btnManageBooks_MouseLeave" Click="btnManageBooks_Click"/>
         <Button x:Name="btnManageMembers" Content="Manage Members" HorizontalAlignment="Left" Margin="341,160,0,0" VerticalAlignment="Top" Width="120" Height="50" MouseEnter="btnManageMembers_MouseEnter" MouseLeave="btnManageMembers_MouseLeave"/>
         <Button x:Name="btnReports" Content="Reports" HorizontalAlignment="Left" Margin="499,160,0,0" VerticalAlignment="Top" Width="120" Height="50" MouseEnter="btnReports_MouseEnter" MouseLeave="btnReports_MouseLeave"/>
         <Button x:Name="btnLogOut" Content="Log out" Margin="336,314,336,0" VerticalAlignment="Top" Height="50" Click="btnLogOut_Click"/>

@@ -60,16 +60,22 @@ namespace LibraryAssignment
         {
             lblReportsInfo.Visibility = Visibility.Hidden;
         }
+
+
+
+
+
+
+
+
+
         #endregion
 
-
-
-
-
-
-
-
-
-
+        private void btnManageBooks_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+            BookManage manage = new BookManage();
+            manage.Show();
+        }
     }
 }
