@@ -75,7 +75,7 @@ namespace LibraryAssignment
                 XmlNode bookTitle = user.SelectSingleNode("/catalog/User/CheckedOut/BookTitle");
                 XmlNode dueDate = user.SelectSingleNode("/catalog/User/CheckedOut/DueDate");
 
-                if (bookTitle.InnerText == title)
+                if (bookTitle != null && bookTitle.InnerText == title)
                 {
                     bookTitle.ParentNode.RemoveChild(bookTitle);
                     dueDate.ParentNode.RemoveChild(dueDate);

@@ -14,6 +14,10 @@ namespace LibraryAssignment
         public String currentUserBooks;
         public int currentUserNoOfBooks;
 
+        private String xmlBookFilePath => "LibraryInventory.xml";
+        private String xmlUserFilePath => "UserList.xml";
+        private string dueDate = DateTime.Now.AddMonths(1).ToShortDateString();
+
         public Checkout(PramStore pramStore)
         {
             _pramStore = pramStore;
@@ -25,9 +29,6 @@ namespace LibraryAssignment
             // currentUserNoOfBooks = _pramStore.CurrentUser.UserNoBooks;
         }
 
-        private String xmlBookFilePath => "LibraryInventory.xml";
-        private String xmlUserFilePath => "UserList.xml";
-        private string dueDate = DateTime.Now.AddMonths(1).ToShortDateString();
 
         private void txtCheckoutBookId_GotFocus(object sender, RoutedEventArgs e)
         {
