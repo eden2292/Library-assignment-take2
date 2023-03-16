@@ -51,9 +51,5 @@ namespace LibraryAssignment
         }
 
 
-        private void dgBookOnLoan_Initialized(object sender, EventArgs e)
-        {
-           
-        }
     }
 }

@@ -13,7 +13,7 @@
         <DataGrid x:Name="dgResults" HorizontalAlignment="Left" Height="179" Margin="369,140,0,0" VerticalAlignment="Top" Width="321" />
         <Button x:Name="btnSearch" Content="Search" HorizontalAlignment="Left" Margin="68,212,0,0" VerticalAlignment="Top" Width="120" Height="50" Click="btnSearch_Click" />
         <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="217,212,0,0" VerticalAlignment="Top" Width="120" Height="50" Click="btnCancel_Click" />
-        <Button x:Name="btnReserve" Content="Reserve" HorizontalAlignment="Left" Margin="464,334,0,0" VerticalAlignment="Top" Width="120" Height="50" />
+        <Button x:Name="btnReserve" Content="Reserve" HorizontalAlignment="Left" Margin="464,334,0,0" VerticalAlignment="Top" Width="120" Height="50" Click="btnReserve_Click" />
         <Image HorizontalAlignment="Left" Height="115" Margin="10,10,0,0" VerticalAlignment="Top" Width="119" Source="BookImage.png" />
     </Grid>
 </Window>

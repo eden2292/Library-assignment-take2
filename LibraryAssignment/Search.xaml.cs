@@ -2,6 +2,7 @@
 using System.Data;
 using System.Text;
 using System.Windows;
+using System.Xml;
 
 namespace LibraryAssignment
 {
@@ -12,11 +13,13 @@ namespace LibraryAssignment
     {
         private readonly PramStore _pramStore;
         private String xmlBookFilePath => "LibraryInventory.xml";
+        private String xmlUserFilePath => "UserList.xml";
+        public String currentUserId;
 
         public Search()
         {
             InitializeComponent();
-
+            currentUserId = _pramStore.CurrentUser.UserId;
             DataSet dataSet = new DataSet();
             //Read the xml file into the dataset
             dataSet.ReadXml(xmlBookFilePath);
@@ -53,6 +56,17 @@ namespace LibraryAssignment
         private void txtSearchTitle_GotFocus(object sender, RoutedEventArgs e)
         {
             txtSearchTitle.Clear();
+        }
+
+        private void btnReserve_Click(object sender, RoutedEventArgs e)
+        {
+            XmlDocument xmlDocument = new XmlDocument();
+            xmlDocument.Load(xmlBookFilePath);
+
+            XmlDocument xmlDocUser = new XmlDocument();
+            xmlDocUser.Load(xmlUserFilePath);
+
+
         }
     }
 }
