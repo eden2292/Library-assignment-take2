@@ -7,19 +7,19 @@
         mc:Ignorable="d"
         Title="Account" Height="450" Width="800"  WindowStartupLocation="CenterScreen">
     <Grid Background="#FF71AFE4">
-        <Button x:Name="btnCancel" Content="Cancel" Margin="619,161,53,0" VerticalAlignment="Top" Height="50" Click="btnLogOut_Click"/>
-        <TextBox x:Name="txtName" HorizontalAlignment="Left" Height="23" Margin="320,77,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="241" FontSize="20" FontFamily="Global User Interface"/>
-        <TextBox x:Name="txtPhone" HorizontalAlignment="Left" Height="23" Margin="320,119,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="241" FontSize="20" FontFamily="Global User Interface"/>
-        <TextBox x:Name="txtEmail" HorizontalAlignment="Left" Height="23" Margin="320,161,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="241" FontSize="20" FontFamily="Global User Interface"/>
-        <TextBox x:Name="txtBooksCheckedOut" HorizontalAlignment="Left" Height="99" Margin="320,241,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="241" FontSize="20" FontFamily="Global User Interface"/>
-        <TextBox x:Name="txtFines" HorizontalAlignment="Left" Height="23" Margin="320,201,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="241" FontSize="20" FontFamily="Global User Interface"/>
-        <TextBlock HorizontalAlignment="Left" Margin="258,77,0,0" TextWrapping="Wrap" Text="Name:" VerticalAlignment="Top" Height="23" FontSize="20" FontFamily="Global User Interface" Foreground="White" />
-        <TextBlock HorizontalAlignment="Left" Margin="220,119,0,0" TextWrapping="Wrap" Text="Telephone:" VerticalAlignment="Top" Height="23" FontSize="20" FontFamily="Global User Interface" Foreground="White"/>
-        <TextBlock HorizontalAlignment="Left" Margin="264,161,0,0" TextWrapping="Wrap" Text="Email:" VerticalAlignment="Top" Height="23" FontSize="20" FontFamily="Global User Interface" Foreground="White"/>
-        <TextBlock HorizontalAlignment="Left" Margin="185,241,0,0" TextWrapping="Wrap" Text="Books on loan:" VerticalAlignment="Top" Height="23" FontSize="20" FontFamily="Global User Interface" Foreground="White"/>
-        <TextBlock HorizontalAlignment="Left" Margin="154,201,0,0" TextWrapping="Wrap" Text="Outstanding fines:" VerticalAlignment="Top" Height="23" FontSize="20" FontFamily="Global User Interface" Foreground="White"/>
-        <Image HorizontalAlignment="Left" Height="115" Margin="10,10,0,0" VerticalAlignment="Top" Width="119" Source="BookImage.png"/>
-        <Button x:Name="btnPayPage" Content="Pay fine" HorizontalAlignment="Left" Margin="619,77,0,0" VerticalAlignment="Top" Width="120" Height="50"/>
-
+        <Button x:Name="btnCancel" Content="Cancel" Margin="570,206,102,0" VerticalAlignment="Top" Height="50" Click="btnLogOut_Click" />
+        <TextBox x:Name="txtName" HorizontalAlignment="Left" Height="23" Margin="271,122,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="241" FontSize="20" FontFamily="Global User Interface" />
+        <TextBox x:Name="txtPhone" HorizontalAlignment="Left" Height="23" Margin="271,164,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="241" FontSize="20" FontFamily="Global User Interface" />
+        <TextBox x:Name="txtEmail" HorizontalAlignment="Left" Height="23" Margin="271,206,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="241" FontSize="20" FontFamily="Global User Interface" />
+        <TextBox x:Name="txtBooksCheckedOut" HorizontalAlignment="Left" Height="99" Margin="271,286,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="241" FontSize="20" FontFamily="Global User Interface" />
+        <TextBox x:Name="txtFines" HorizontalAlignment="Left" Height="23" Margin="271,246,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="241" FontSize="20" FontFamily="Global User Interface" />
+        <TextBlock HorizontalAlignment="Left" Margin="209,122,0,0" TextWrapping="Wrap" Text="Name:" VerticalAlignment="Top" Height="23" FontSize="20" FontFamily="Global User Interface" Foreground="White" />
+        <TextBlock HorizontalAlignment="Left" Margin="171,164,0,0" TextWrapping="Wrap" Text="Telephone:" VerticalAlignment="Top" Height="23" FontSize="20" FontFamily="Global User Interface" Foreground="White" />
+        <TextBlock HorizontalAlignment="Left" Margin="215,206,0,0" TextWrapping="Wrap" Text="Email:" VerticalAlignment="Top" Height="23" FontSize="20" FontFamily="Global User Interface" Foreground="White" />
+        <TextBlock HorizontalAlignment="Left" Margin="136,286,0,0" TextWrapping="Wrap" Text="Books on loan:" VerticalAlignment="Top" Height="23" FontSize="20" FontFamily="Global User Interface" Foreground="White" />
+        <TextBlock HorizontalAlignment="Left" Margin="105,246,0,0" TextWrapping="Wrap" Text="Outstanding fines:" VerticalAlignment="Top" Height="23" FontSize="20" FontFamily="Global User Interface" Foreground="White" />
+        <Image HorizontalAlignment="Left" Height="115" Margin="10,10,0,0" VerticalAlignment="Top" Width="119" Source="BookImage.png" />
+        <Button x:Name="btnPayPage" Content="Pay fine" HorizontalAlignment="Left" Margin="570,122,0,0" VerticalAlignment="Top" Width="120" Height="50" />
+        <TextBlock Margin="259,31,245,0" TextWrapping="Wrap" Text="Account" VerticalAlignment="Top" FontFamily="Global User Interface" FontSize="72" Foreground="White" />
     </Grid>
 </Window>

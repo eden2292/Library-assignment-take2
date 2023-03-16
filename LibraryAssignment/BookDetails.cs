@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LibraryAssignment
 {
-    class BookDetails
+    internal class BookDetails
     {
         public String author { get; set; }
         public String title { get; set; }

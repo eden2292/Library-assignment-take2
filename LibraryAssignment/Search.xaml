@@ -7,17 +7,13 @@
         mc:Ignorable="d"
         Title="Search" Height="450" Width="800"  WindowStartupLocation="CenterScreen">
     <Grid Background="#FF71AFE4">
-        <TextBlock Margin="284,27,283,0" TextWrapping="Wrap" Text="Search" VerticalAlignment="Top" FontFamily="Global User Interface" FontSize="72" Foreground="White"/>
-        <TextBlock HorizontalAlignment="Left" Margin="108,140,0,0" TextWrapping="Wrap" Text="Title" VerticalAlignment="Top" FontFamily="Global User Interface" FontSize="20" Foreground="White"/>
-        <TextBlock HorizontalAlignment="Left" Margin="84,180,0,0" TextWrapping="Wrap" Text="Author" VerticalAlignment="Top" FontFamily="Global User Interface" FontSize="20" Foreground="White"/>
-        <TextBlock HorizontalAlignment="Left" Margin="92,220,0,0" TextWrapping="Wrap" Text="Genre" VerticalAlignment="Top" FontFamily="Global User Interface" FontSize="20" Foreground="White"/>
-        <TextBlock HorizontalAlignment="Left" Margin="247,99,0,0" TextWrapping="Wrap" Text="Select one or more properties to search by" VerticalAlignment="Top" FontFamily="Global User Interface" FontSize="16" Foreground="White" FontWeight="ExtraLight"/>
-        <TextBox x:Name="txtSearchTitle" HorizontalAlignment="Left" Height="23" Margin="150,140,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="168" FontFamily="Global User Interface" FontSize="20"/>
-        <TextBox x:Name="txtSearchAuth" HorizontalAlignment="Left" Height="23" Margin="150,181,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="168" FontFamily="Global User Interface" FontSize="20"/>
-        <TextBox x:Name="txtSearchGenre" HorizontalAlignment="Left" Height="23" Margin="150,221,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="168" FontFamily="Global User Interface" FontSize="20"/>
-        <DataGrid x:Name="dgResults" HorizontalAlignment="Left" Height="179" Margin="369,140,0,0" VerticalAlignment="Top" Width="321"/>
-        <Button x:Name="btnSearch" Content="Search" HorizontalAlignment="Left" Margin="92,269,0,0" VerticalAlignment="Top" Width="120" Height="50" Click="btnSearch_Click"/>
-        <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="231,269,0,0" VerticalAlignment="Top" Width="120" Height="50" Click="btnCancel_Click" />
+        <TextBlock Margin="284,27,283,0" TextWrapping="Wrap" Text="Search" VerticalAlignment="Top" FontFamily="Global User Interface" FontSize="72" Foreground="White" />
+        <TextBlock HorizontalAlignment="Left" Margin="247,99,0,0" TextWrapping="Wrap" Text="Select one or more properties to search by" VerticalAlignment="Top" FontFamily="Global User Interface" FontSize="16" Foreground="White" FontWeight="ExtraLight" />
+        <TextBox x:Name="txtSearchTitle" HorizontalAlignment="Left" Height="38" Margin="68,160,0,0" TextWrapping="Wrap" Text="Enter search term" VerticalAlignment="Top" Width="269" FontFamily="Global User Interface" FontSize="30" FontWeight="ExtraLight" FontStyle="Italic" GotFocus="txtSearchTitle_GotFocus" />
+        <DataGrid x:Name="dgResults" HorizontalAlignment="Left" Height="179" Margin="369,140,0,0" VerticalAlignment="Top" Width="321" />
+        <Button x:Name="btnSearch" Content="Search" HorizontalAlignment="Left" Margin="68,212,0,0" VerticalAlignment="Top" Width="120" Height="50" Click="btnSearch_Click" />
+        <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="217,212,0,0" VerticalAlignment="Top" Width="120" Height="50" Click="btnCancel_Click" />
+        <Button x:Name="btnReserve" Content="Reserve" HorizontalAlignment="Left" Margin="464,334,0,0" VerticalAlignment="Top" Width="120" Height="50" />
+        <Image HorizontalAlignment="Left" Height="115" Margin="10,10,0,0" VerticalAlignment="Top" Width="119" Source="BookImage.png" />
     </Grid>
 </Window>
- 

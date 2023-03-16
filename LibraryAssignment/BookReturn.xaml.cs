@@ -13,7 +13,7 @@ namespace LibraryAssignment
         public String currentUserId;
         public String currentUserBooks;
         public String title;
-        bool bookFound = false;
+        private bool bookFound = false;
 
         private String xmlBookFilePath => "LibraryInventory.xml";
         private String xmlUserFilePath => "UserList.xml";
@@ -40,6 +40,7 @@ namespace LibraryAssignment
         }
 
         #region return
+
         private void btnReturn_Click(object sender, RoutedEventArgs e)
         {
             XmlDocument xmlDocument = new XmlDocument();
@@ -51,21 +52,17 @@ namespace LibraryAssignment
             XmlNodeList bookNodes = xmlDocument.DocumentElement.SelectNodes("/library/book");
             XmlNodeList userNodes = userDocument.DocumentElement.SelectNodes("/catalog/User");
 
-
             foreach (XmlNode book in bookNodes)
             {
-
                 XmlNode bookId = book.SelectSingleNode("bookId");
 
                 if (txtReturn.Text == bookId.InnerText)
                 {
-
                     XmlNode checkedOut = book.SelectSingleNode("checkedOut");
                     title = book.SelectSingleNode("title").InnerText;
                     book.RemoveChild(checkedOut);
                     MessageBox.Show("Successfully returned!");
                     bookFound = true;
-
                 }
             }
             if (bookFound == false)
@@ -76,19 +73,19 @@ namespace LibraryAssignment
             foreach (XmlNode user in userNodes)
             {
                 XmlNode bookTitle = user.SelectSingleNode("/catalog/User/CheckedOut/BookTitle");
+                XmlNode dueDate = user.SelectSingleNode("/catalog/User/CheckedOut/DueDate");
 
                 if (bookTitle.InnerText == title)
                 {
                     bookTitle.ParentNode.RemoveChild(bookTitle);
+                    dueDate.ParentNode.RemoveChild(dueDate);
                 }
-
             }
             xmlDocument.Save(xmlBookFilePath);
             userDocument.Save(xmlUserFilePath);
         }
 
-
-        #endregion
+        #endregion return
 
         private void btnRenew_Click(object sender, RoutedEventArgs e)
         {
@@ -99,18 +96,15 @@ namespace LibraryAssignment
 
             foreach (XmlNode book in bookNodes)
             {
-
                 XmlNode bookId = book.SelectSingleNode("bookId");
 
                 if (txtReturn.Text == bookId.InnerText)
                 {
-
                     book.SelectSingleNode("checkedOut").InnerText = newDate;
                     MessageBox.Show($"Your new due date is \n {newDate}");
                     bookFound = true;
-
                 }
-                if(!bookFound)
+                if (!bookFound)
                 {
                     MessageBox.Show("An error has occured \n please contact the librarian");
                 }

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows;
-using System.Xml;
 
 namespace LibraryAssignment
 {
@@ -20,10 +19,10 @@ namespace LibraryAssignment
             txtName.Text = _pramStore.CurrentUser.UserName;
             txtPhone.Text = _pramStore.CurrentUser.UserPhone;
             txtBooksCheckedOut.Text = _pramStore.CurrentUser.UserBooks;
-            
         }
 
         private String xmlUserFilePath => "UserList.xml";
+
         private void btnLogOut_Click(object sender, RoutedEventArgs e)
         {
             Close();

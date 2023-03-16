@@ -1,16 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
+﻿using System.Windows;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace LibraryAssignment
 {
@@ -23,6 +12,7 @@ namespace LibraryAssignment
         {
             InitializeComponent();
         }
+
         private void btnLogOut_Click(object sender, RoutedEventArgs e)
         {
             Close();
@@ -31,6 +21,7 @@ namespace LibraryAssignment
         }
 
         #region Label_Controls
+
         private void btnManageBooks_MouseEnter(object sender, MouseEventArgs e)
         {
             lblManageBooksInfo.Visibility = Visibility.Visible;
@@ -61,15 +52,7 @@ namespace LibraryAssignment
             lblReportsInfo.Visibility = Visibility.Hidden;
         }
 
-
-
-
-
-
-
-
-
-        #endregion
+        #endregion Label_Controls
 
         private void btnManageBooks_Click(object sender, RoutedEventArgs e)
         {

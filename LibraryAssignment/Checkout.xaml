@@ -7,11 +7,10 @@
         mc:Ignorable="d"
         Title="Checkout" Height="450" Width="800"  WindowStartupLocation="CenterScreen">
     <Grid Background="#FF71AFE4">
-        <TextBlock HorizontalAlignment="Left" Margin="219,82,0,0" TextWrapping="Wrap" Text="Check out" VerticalAlignment="Top" Height="76" Width="331" FontFamily="Global User Interface" FontSize="72" Foreground="White"/>
-        <TextBox x:Name="txtCheckoutBookId" Height="28" Margin="312,193,313,0" TextWrapping="Wrap" Text="Enter book ID" VerticalAlignment="Top" FontFamily="Global User Interface" FontSize="20" Foreground="Black" GotFocus="txtCheckoutBookId_GotFocus"/>
-        <Button x:Name="btnCheckoutBook" Content="Checkout" HorizontalAlignment="Left" Margin="237,285,0,0" VerticalAlignment="Top" Width="120" Height="50" Click="btnCheckoutBook_Click"/>
-        <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="430,285,0,0" VerticalAlignment="Top" Width="120" Height="50" Click="btnCancel_Click"/>
-        <Image HorizontalAlignment="Left" Height="115" Margin="10,10,0,0" VerticalAlignment="Top" Width="119" Source="BookImage.png"/>
-
+        <TextBlock HorizontalAlignment="Left" Margin="219,82,0,0" TextWrapping="Wrap" Text="Check out" VerticalAlignment="Top" Height="76" Width="331" FontFamily="Global User Interface" FontSize="72" Foreground="White" />
+        <TextBox x:Name="txtCheckoutBookId" Height="28" Margin="312,193,313,0" TextWrapping="Wrap" Text="Enter book ID" VerticalAlignment="Top" FontFamily="Global User Interface" FontSize="20" Foreground="Black" GotFocus="txtCheckoutBookId_GotFocus" />
+        <Button x:Name="btnCheckoutBook" Content="Checkout" HorizontalAlignment="Left" Margin="237,285,0,0" VerticalAlignment="Top" Width="120" Height="50" Click="btnCheckoutBook_Click" />
+        <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="430,285,0,0" VerticalAlignment="Top" Width="120" Height="50" Click="btnCancel_Click" />
+        <Image HorizontalAlignment="Left" Height="115" Margin="10,10,0,0" VerticalAlignment="Top" Width="119" Source="BookImage.png" />
     </Grid>
 </Window>

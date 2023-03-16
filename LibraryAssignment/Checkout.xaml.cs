@@ -20,15 +20,14 @@ namespace LibraryAssignment
             InitializeComponent();
             currentUserId = _pramStore.CurrentUser.UserId;
             currentUserBooks = _pramStore.CurrentUser.UserBooks;
-          
-            // get count of books from xml checked out 
+
+            // get count of books from xml checked out
             // currentUserNoOfBooks = _pramStore.CurrentUser.UserNoBooks;
         }
 
         private String xmlBookFilePath => "LibraryInventory.xml";
         private String xmlUserFilePath => "UserList.xml";
         private string dueDate = DateTime.Now.AddMonths(1).ToShortDateString();
-
 
         private void txtCheckoutBookId_GotFocus(object sender, RoutedEventArgs e)
         {
@@ -71,7 +70,7 @@ namespace LibraryAssignment
                     xmlNode.OwnerDocument.Save(xmlBookFilePath);
 
                     XmlNodeList userNodeList = xmlDocUser.DocumentElement.SelectNodes("/catalog/User");
-                    
+
                     foreach (XmlNode user in userNodeList)
                     {
                         if (_pramStore.CurrentUser.UserId == user.SelectSingleNode("UserID").InnerText)
@@ -80,13 +79,13 @@ namespace LibraryAssignment
                             XmlElement dueDateElem = xmlDocUser.CreateElement("DueDate");
                             newBookElem.InnerText = xmlNode.SelectSingleNode("title").InnerText;
                             dueDateElem.InnerText = xmlNode.SelectSingleNode("checkedOut").InnerText;
-                            
-  
+
                             user.SelectSingleNode("CheckedOut").AppendChild(newBookElem);
+                            user.SelectSingleNode("CheckedOut").AppendChild(dueDateElem);
                             user.OwnerDocument.Save(xmlUserFilePath);
                         }
                     }
-                    
+
                     MessageBox.Show($"Your due date is {dueDate}");
                     bookFound = true;
                     bookAvailable = true;

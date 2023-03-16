@@ -1,7 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Input;
 
-
 namespace LibraryAssignment
 {
     /// <summary>
@@ -17,9 +16,10 @@ namespace LibraryAssignment
             InitializeComponent();
         }
 
-        
         //Code that I was trying out. Might work....
+
         #region ExperimentalCode
+
         //private void btnCheckout_MouseEnter((Button) sender, MouseEventArgs e)
         //{
         //    Button button = new Button();
@@ -42,17 +42,20 @@ namespace LibraryAssignment
         //    }
         //    lblInfo.Visibility = Visibility.Visible;
         //}
-        #endregion
+
+        #endregion ExperimentalCode
 
         //Controls to Show and hide labels with further information on presented options.
+
         #region Label controls
+
         private void btnCheckout_MouseEnter(object sender, MouseEventArgs e)
         {
             lblCheckout.Visibility = Visibility.Visible;
         }
+
         private void btnCheckout_MouseLeave(object sender, MouseEventArgs e)
         {
-            
             lblCheckout.Visibility = Visibility.Hidden;
         }
 
@@ -60,9 +63,9 @@ namespace LibraryAssignment
         {
             lblReturn.Visibility = Visibility.Visible;
         }
+
         private void btnReturn_MouseLeave(object sender, MouseEventArgs e)
         {
-
             lblReturn.Visibility = Visibility.Hidden;
         }
 
@@ -70,26 +73,26 @@ namespace LibraryAssignment
         {
             lblSearch.Visibility = Visibility.Visible;
         }
+
         private void btnSearch_MouseLeave(object sender, MouseEventArgs e)
         {
-
             lblSearch.Visibility = Visibility.Hidden;
         }
 
         private void btnAccount_MouseEnter(object sender, MouseEventArgs e)
         {
-           lblAccount.Visibility = Visibility.Visible;
+            lblAccount.Visibility = Visibility.Visible;
         }
+
         private void btnAccount_MouseLeave(object sender, MouseEventArgs e)
         {
-
             lblAccount.Visibility = Visibility.Hidden;
         }
 
-        #endregion
-
+        #endregion Label controls
 
         //Controls to switch to a new page when the user selects an option
+
         #region userPageControls
 
         private void btnCheckout_Click(object sender, RoutedEventArgs e)
@@ -120,8 +123,7 @@ namespace LibraryAssignment
             search.Show();
         }
 
-
-        #endregion
+        #endregion userPageControls
 
         private void btnLogOut_Click(object sender, RoutedEventArgs e)
         {
@@ -129,7 +131,5 @@ namespace LibraryAssignment
             MainWindow main = new MainWindow();
             main.Show();
         }
-
-      
     }
 }

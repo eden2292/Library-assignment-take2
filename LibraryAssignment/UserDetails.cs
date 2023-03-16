@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml;
 
 namespace LibraryAssignment
 {
@@ -16,7 +11,5 @@ namespace LibraryAssignment
         public String UserTag { get; set; }
         public String UserBooks { get; set; }
         public String UserNoOfBooks { get; set; }
-        
-        
     }
 }

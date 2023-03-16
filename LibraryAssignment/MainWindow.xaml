@@ -7,12 +7,10 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid Background="#FF71AFE4">
-        <TextBlock x:Name="txtWelcome" Margin="228,50,214,0" TextWrapping="Wrap" Text="WELCOME" VerticalAlignment="Top" Height="114" FontFamily="Global User Interface" FontSize="72" Foreground="White"/>
-        <TextBlock x:Name="txtInstructLog" Margin="270,130,234,0" TextWrapping="Wrap" Text="Please log in" VerticalAlignment="Top" Height="81" FontFamily="Global User Interface" FontSize="48" Foreground="White" FontWeight="Light"/>
-        <TextBox x:Name="txtUserId" Height="49" Margin="196,216,195,0" TextWrapping="Wrap" Text="Enter User ID Number" VerticalAlignment="Top" FontFamily="Global User Interface" FontSize="40" Foreground="Black" FontStyle="Italic" FontWeight="ExtraLight" GotFocus="txtUserId_GotFocus"/>
-        <Button x:Name="btnAccess" Content="Log In" Margin="300,320,300,0" VerticalAlignment="Top" Height="44" FontFamily="Global User Interface" FontSize="32" Click="btnAccess_Click"/>
-        <Image HorizontalAlignment="Left" Height="115" Margin="10,10,0,0" VerticalAlignment="Top" Width="119" Source="BookImage.png"/>
-
-
+        <TextBlock x:Name="txtWelcome" Margin="228,50,214,0" TextWrapping="Wrap" Text="WELCOME" VerticalAlignment="Top" Height="114" FontFamily="Global User Interface" FontSize="72" Foreground="White" />
+        <TextBlock x:Name="txtInstructLog" Margin="270,130,234,0" TextWrapping="Wrap" Text="Please log in" VerticalAlignment="Top" Height="81" FontFamily="Global User Interface" FontSize="48" Foreground="White" FontWeight="Light" />
+        <TextBox x:Name="txtUserId" Height="49" Margin="196,216,195,0" TextWrapping="Wrap" Text="Enter User ID Number" VerticalAlignment="Top" FontFamily="Global User Interface" FontSize="40" Foreground="Black" FontStyle="Italic" FontWeight="ExtraLight" GotFocus="txtUserId_GotFocus" />
+        <Button x:Name="btnAccess" Content="Log In" Margin="300,320,300,0" VerticalAlignment="Top" Height="44" FontFamily="Global User Interface" FontSize="32" Click="btnAccess_Click" />
+        <Image HorizontalAlignment="Left" Height="115" Margin="10,10,0,0" VerticalAlignment="Top" Width="119" Source="BookImage.png" />
     </Grid>
 </Window>
