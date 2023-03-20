@@ -14,36 +14,9 @@ namespace LibraryAssignment
         {
             _pramStore = pramStore;
             InitializeComponent();
+
+
         }
-
-        //Code that I was trying out. Might work....
-
-        #region ExperimentalCode
-
-        //private void btnCheckout_MouseEnter((Button) sender, MouseEventArgs e)
-        //{
-        //    Button button = new Button();
-
-        //    if (button.Content == "Checkout")
-        //    {
-        //        lblInfo.Content = "Checkout your selected books";
-        //    }
-        //    else if(button.Content == "Return")
-        //    {
-        //        lblInfo.Content = "Return books you have read";
-        //    }
-        //    else if (button.Content == "Search")
-        //    {
-        //        lblInfo.Content = "Search for and reserve books";
-        //    }
-        //    else if (button.Content == "Account")
-        //    {
-        //        lblInfo.Content = "View account information, including fines";
-        //    }
-        //    lblInfo.Visibility = Visibility.Visible;
-        //}
-
-        #endregion ExperimentalCode
 
         //Controls to Show and hide labels with further information on presented options.
 
@@ -119,7 +92,7 @@ namespace LibraryAssignment
         private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
             Close();
-            Search search = new Search();
+            Search search = new Search(_pramStore);
             search.Show();
         }
 

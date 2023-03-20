@@ -21,7 +21,7 @@ namespace LibraryAssignment
 
             DataSet dataSet = new DataSet();
             dataSet.ReadXml(xmlUserFilePath);
-            dgBookOnLoan.ItemsSource=dataSet.Tables[0].DefaultView;
+            dgBookOnLoan.ItemsSource = dataSet.Tables[0].DefaultView;
 
             txtEmail.Text = _pramStore.CurrentUser.UserEmail;
             txtName.Text = _pramStore.CurrentUser.UserName;
@@ -38,10 +38,7 @@ namespace LibraryAssignment
             sb.Remove(sb.Length - 3, 3);
             dgBookOnLoan.ItemsSource = dv;
             dgBookOnLoan.Items.Refresh();
-
         }
-
-
 
         private void btnLogOut_Click(object sender, RoutedEventArgs e)
         {
@@ -49,7 +46,5 @@ namespace LibraryAssignment
             UserHome home = new UserHome(_pramStore);
             home.Show();
         }
-
-
     }
 }

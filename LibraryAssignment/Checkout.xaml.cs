@@ -29,7 +29,6 @@ namespace LibraryAssignment
             // currentUserNoOfBooks = _pramStore.CurrentUser.UserNoBooks;
         }
 
-
         private void txtCheckoutBookId_GotFocus(object sender, RoutedEventArgs e)
         {
             txtCheckoutBookId.Clear();
@@ -44,46 +43,59 @@ namespace LibraryAssignment
 
         private void btnCheckoutBook_Click(object sender, RoutedEventArgs e)
         {
-            XmlDocument xmlDocument = new XmlDocument();
-            xmlDocument.Load(xmlBookFilePath);
+            XmlDocument xmlDocBook = new XmlDocument();
+            xmlDocBook.Load(xmlBookFilePath);
 
             XmlDocument xmlDocUser = new XmlDocument();
             xmlDocUser.Load(xmlUserFilePath);
 
-            XmlNodeList xmlNodeList = xmlDocument.DocumentElement.SelectNodes("/library/book");
+            XmlNodeList xmlNodeList = xmlDocBook.DocumentElement.SelectNodes("/library/book");
 
             bool bookFound = false;
             bool bookAvailable = false;
 
-            foreach (XmlNode xmlNode in xmlNodeList)
+            foreach (XmlNode xmlBookNode in xmlNodeList)
             {
-                XmlNode bookId = xmlNode.SelectSingleNode("bookId");
-                XmlNode checkedOut = xmlNode.SelectSingleNode("checkedOut");
-                String title = Convert.ToString(xmlNode.SelectSingleNode("title"));
+                XmlNode bookId = xmlBookNode.SelectSingleNode("bookId");
+                XmlNode checkedOut = xmlBookNode.SelectSingleNode("checkedOut");
+                String title = Convert.ToString(xmlBookNode.SelectSingleNode("title"));
                 //XmlNode currentUser = xmlNode.SelectSingleNode("UserId");
 
                 if (txtCheckoutBookId.Text == bookId.InnerText && checkedOut == null)
                 {
-                    XmlElement newElem = xmlDocument.CreateElement("checkedOut");
+                    XmlElement newElem = xmlDocBook.CreateElement("checkedOut");
                     newElem.InnerText = dueDate;
 
-                    xmlNode.AppendChild(newElem);
-                    xmlNode.OwnerDocument.Save(xmlBookFilePath);
+                    xmlBookNode.AppendChild(newElem);
+
+                    if(xmlBookNode.SelectSingleNode("reserved") != null)
+                    {
+                        XmlNode reserved = xmlBookNode.SelectSingleNode("reserved");
+                        xmlBookNode.RemoveChild(reserved);
+                    }
+
+                    xmlBookNode.OwnerDocument.Save(xmlBookFilePath);
 
                     XmlNodeList userNodeList = xmlDocUser.DocumentElement.SelectNodes("/catalog/User");
 
-                    foreach (XmlNode user in userNodeList)
+                    foreach (XmlNode xmlUserNode in userNodeList)
                     {
-                        if (_pramStore.CurrentUser.UserId == user.SelectSingleNode("UserID").InnerText)
+                        if (_pramStore.CurrentUser.UserId == xmlUserNode.SelectSingleNode("UserID").InnerText)
                         {
                             XmlElement newBookElem = xmlDocUser.CreateElement("BookTitle");
                             XmlElement dueDateElem = xmlDocUser.CreateElement("DueDate");
-                            newBookElem.InnerText = xmlNode.SelectSingleNode("title").InnerText;
-                            dueDateElem.InnerText = xmlNode.SelectSingleNode("checkedOut").InnerText;
+                            newBookElem.InnerText = xmlBookNode.SelectSingleNode("title").InnerText;
+                            dueDateElem.InnerText = xmlBookNode.SelectSingleNode("checkedOut").InnerText;
 
-                            user.SelectSingleNode("CheckedOut").AppendChild(newBookElem);
-                            user.SelectSingleNode("CheckedOut").AppendChild(dueDateElem);
-                            user.OwnerDocument.Save(xmlUserFilePath);
+                            xmlUserNode.SelectSingleNode("CheckedOut").AppendChild(newBookElem);
+                            xmlUserNode.SelectSingleNode("CheckedOut").AppendChild(dueDateElem);
+
+                            if (xmlUserNode.SelectSingleNode("Reserved") != null)
+                            {
+                                XmlNode Reserved = xmlUserNode.SelectSingleNode("Reserved");
+                                xmlUserNode.RemoveChild(Reserved);
+                            }
+                            xmlUserNode.OwnerDocument.Save(xmlUserFilePath);
                         }
                     }
 
