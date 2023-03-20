@@ -77,7 +77,8 @@ namespace LibraryAssignment
 
                         foreach(XmlNode xmlBookNode in xmlBookNodeList)
                         {
-                            if(reserved == xmlDocBooks.SelectSingleNode("//title").InnerText)
+                            XmlNode book = xmlBookNode.SelectSingleNode("title");
+                            if(reserved == book.InnerText)
                             {
                                 XmlNode checkedOut = xmlBookNode.SelectSingleNode("checkedOut");
 

@@ -55,43 +55,64 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Account.xaml.cs">
+    <Compile Include="Librarian\AllReports.xaml.cs">
+      <DependentUpon>AllReports.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Librarian\Fines.xaml.cs">
+      <DependentUpon>Fines.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Librarian\MemberManage.xaml.cs">
+      <DependentUpon>MemberManage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Member\Account.xaml.cs">
       <DependentUpon>Account.xaml</DependentUpon>
     </Compile>
-    <Compile Include="BookDetails.cs" />
-    <Compile Include="BookManage.xaml.cs">
+    <Compile Include="details\BookDetails.cs" />
+    <Compile Include="Librarian\BookManage.xaml.cs">
       <DependentUpon>BookManage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="BookReturn.xaml.cs">
+    <Compile Include="Member\BookReturn.xaml.cs">
       <DependentUpon>BookReturn.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Checkout.xaml.cs">
+    <Compile Include="Member\Checkout.xaml.cs">
       <DependentUpon>Checkout.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PramStore.cs" />
-    <Compile Include="Search.xaml.cs">
+    <Compile Include="details\PramStore.cs" />
+    <Compile Include="Member\Search.xaml.cs">
       <DependentUpon>Search.xaml</DependentUpon>
     </Compile>
-    <Compile Include="StaffHome.xaml.cs">
+    <Compile Include="Librarian\StaffHome.xaml.cs">
       <DependentUpon>StaffHome.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserDetails.cs" />
-    <Compile Include="UserHome.xaml.cs">
+    <Compile Include="details\UserDetails.cs" />
+    <Compile Include="Member\UserHome.xaml.cs">
       <DependentUpon>UserHome.xaml</DependentUpon>
     </Compile>
-    <Page Include="Account.xaml">
+    <Page Include="Librarian\AllReports.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="BookManage.xaml">
+    <Page Include="Librarian\Fines.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="BookReturn.xaml">
+    <Page Include="Librarian\MemberManage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Checkout.xaml">
+    <Page Include="Member\Account.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Librarian\BookManage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Member\BookReturn.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Member\Checkout.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -107,15 +128,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Search.xaml">
+    <Page Include="Member\Search.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="StaffHome.xaml">
+    <Page Include="Librarian\StaffHome.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserHome.xaml">
+    <Page Include="Member\UserHome.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -147,7 +168,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Librarian\BookImage.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="BookImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Member\BookImage.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -24,9 +24,6 @@ namespace LibraryAssignment
             InitializeComponent();
             currentUserId = _pramStore.CurrentUser.UserId;
             currentUserBooks = _pramStore.CurrentUser.UserBooks;
-
-            // get count of books from xml checked out
-            // currentUserNoOfBooks = _pramStore.CurrentUser.UserNoBooks;
         }
 
         private void txtCheckoutBookId_GotFocus(object sender, RoutedEventArgs e)

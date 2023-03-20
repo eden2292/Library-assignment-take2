@@ -13,13 +13,6 @@ namespace LibraryAssignment
             InitializeComponent();
         }
 
-        private void btnLogOut_Click(object sender, RoutedEventArgs e)
-        {
-            Close();
-            MainWindow main = new MainWindow();
-            main.Show();
-        }
-
         #region Label_Controls
 
         private void btnManageBooks_MouseEnter(object sender, MouseEventArgs e)
@@ -54,11 +47,31 @@ namespace LibraryAssignment
 
         #endregion Label_Controls
 
+        private void btnLogOut_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+            MainWindow main = new MainWindow();
+            main.Show();
+        }
+
         private void btnManageBooks_Click(object sender, RoutedEventArgs e)
         {
             Close();
-            BookManage manage = new BookManage();
-            manage.Show();
+            BookManage bookManage = new BookManage();
+            bookManage.Show();
+        }
+
+        private void btnManageMembers_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+            MemberManage memberManage = new MemberManage();
+            memberManage.Show();
+        }
+
+        private void btnReports_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+            AllReports reports = new AllReports();
         }
     }
 }
