@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using LibraryAssignment.Librarian;
+using System.Windows;
 using System.Windows.Input;
 
 namespace LibraryAssignment
@@ -35,6 +36,16 @@ namespace LibraryAssignment
             lblManageMembersInfo.Visibility = Visibility.Hidden;
         }
 
+        private void btnFines_MouseEnter(object sender, MouseEventArgs e)
+        {
+            lblFinesInfo.Visibility = Visibility.Visible;
+        }
+
+        private void btnFines_MouseLeave(object sender, MouseEventArgs e)
+        {
+            lblFinesInfo.Visibility = Visibility.Hidden;
+        }
+
         private void btnReports_MouseEnter(object sender, MouseEventArgs e)
         {
             lblReportsInfo.Visibility = Visibility.Visible;
@@ -44,6 +55,8 @@ namespace LibraryAssignment
         {
             lblReportsInfo.Visibility = Visibility.Hidden;
         }
+
+        
 
         #endregion Label_Controls
 
@@ -72,6 +85,8 @@ namespace LibraryAssignment
         {
             Close();
             AllReports reports = new AllReports();
+            reports.Show();
         }
+
     }
 }

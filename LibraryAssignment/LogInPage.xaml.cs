@@ -21,10 +21,13 @@ namespace LibraryAssignment
 
         #region variables
 
-        //a string to hold the locations of xmlfiles. This is the only place a file name needs to be changed (n.b. on each page)
+        /// <summary>
+        /// Variables to hold the locations of xml files. If name changes, change in this location. 
+        /// </summary>
         private String xmlUserFilePath => "UserList.xml";
         private String xmlBookFilePath => "LibraryInventory.xml";
 
+        //booleans to trigger message boxes to display. 
         private bool AccessSuccess;
         private bool ReservationAvailable;
 
@@ -70,7 +73,7 @@ namespace LibraryAssignment
                     };
 
 
-                    //check if the user has any reserved books
+                    //check if the user has any reserved books. If their reserved book is not checked out, boolean switches. 
                     if (xmlUserNode.SelectSingleNode("Reserved") != null)
                     {
                         String reserved = xmlUserNode.SelectSingleNode("Reserved").InnerText;
@@ -89,15 +92,19 @@ namespace LibraryAssignment
                             }
                         }
                     }
-                    //switch to landing page based on the "tag" node.
+                    //open the correct home page based on the tag designated to the user. 
                     if (tag.InnerText == "Staff")
                     {
+                        //hide main window instead of closing, as in other pages, to stop the entire program from shutting down. 
                         Hide();
                         StaffHome staffHome = new StaffHome();
                         staffHome.Show();
+                        //if ID matches, switch bool to true to prevent error message from displaying. 
+                        AccessSuccess = true;
                     }
                     else if (tag.InnerText == "Member")
                     {
+                        //display message to show that reserved book is available. 
                         if(ReservationAvailable == true)
                         {
                             MessageBox.Show("Your reserved book is available");
@@ -116,7 +123,8 @@ namespace LibraryAssignment
                 MessageBox.Show("User ID does not match our records");
             }
         }
-
+        
+        //clear text in textbox when clicked for user to enter information. 
         private void txtUserId_GotFocus(object sender, RoutedEventArgs e)
         {
             txtUserId.Clear();

@@ -98,6 +98,7 @@ namespace LibraryAssignment
 
         #endregion userPageControls
 
+        //log out and return to log in page. 
         private void btnLogOut_Click(object sender, RoutedEventArgs e)
         {
             Close();

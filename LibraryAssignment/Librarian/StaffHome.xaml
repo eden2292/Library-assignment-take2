@@ -11,11 +11,13 @@
         <Button x:Name="btnManageMembers" Content="Manage Members" HorizontalAlignment="Left" Margin="269,163,0,0" VerticalAlignment="Top" Width="120" Height="50" MouseEnter="btnManageMembers_MouseEnter" MouseLeave="btnManageMembers_MouseLeave" Click="btnManageMembers_Click" />
         <Button x:Name="btnReports" Content="Reports" HorizontalAlignment="Left" Margin="411,163,0,0" VerticalAlignment="Top" Width="120" Height="50" MouseEnter="btnReports_MouseEnter" MouseLeave="btnReports_MouseLeave" Click="btnReports_Click" />
         <Button x:Name="btnLogOut" Content="Log out" Margin="336,314,336,0" VerticalAlignment="Top" Height="50" Click="btnLogOut_Click" />
+        <Button x:Name="btnFines" Content="View Fines" HorizontalAlignment="Left" Margin="550,163,0,0" VerticalAlignment="Top" Width="120" Height="50"  Click="btnManageBooks_Click" MouseEnter="btnFines_MouseEnter" MouseLeave="btnFines_MouseLeave" />
         <Label x:Name="lblManageBooksInfo" Content="Add and remove inventory" HorizontalAlignment="Left" Margin="321,236,0,0" VerticalAlignment="Top" Width="149" Visibility="Hidden" />
         <Label x:Name="lblManageMembersInfo" Content="Add and remove members, view member accounts" HorizontalAlignment="Left" Margin="253,236,0,0" VerticalAlignment="Top" Visibility="Hidden" />
-        <Label x:Name="lblReportsInfo" Content="View reports, check for late returns, manage fines" HorizontalAlignment="Left" Margin="253,236,0,0" VerticalAlignment="Top" Visibility="Hidden" />
+        <Label x:Name="lblFinesInfo" Content="View fines and contact members" HorizontalAlignment="Left" Margin="302,236,0,0" VerticalAlignment="Top" Width="185" Visibility="Hidden" />
+        <Label x:Name="lblReportsInfo" Content="View reports" HorizontalAlignment="Left" Margin="302,236,0,0" VerticalAlignment="Top" Width="185" Visibility="Hidden" />
+
         <Image HorizontalAlignment="Left" Height="115" Margin="10,10,0,0" VerticalAlignment="Top" Width="119" Source="BookImage.png" />
         <TextBlock x:Name="tbStaffTitle" HorizontalAlignment="Left" Margin="228,60,-207,0" TextWrapping="Wrap" Text="Staff Library" VerticalAlignment="Top" FontFamily="Global User Interface" FontSize="72" Foreground="White" />
-        <Button x:Name="btnFines" Content="View Fines" HorizontalAlignment="Left" Margin="550,163,0,0" VerticalAlignment="Top" Width="120" Height="50"  MouseEnter="btnManageBooks_MouseEnter" MouseLeave="btnManageBooks_MouseLeave" Click="btnManageBooks_Click" />
     </Grid>
 </Window>

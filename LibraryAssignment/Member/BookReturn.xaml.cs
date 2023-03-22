@@ -9,15 +9,16 @@ namespace LibraryAssignment
     /// </summary>
     public partial class BookReturn : Window
     {
+        #region variables
         private readonly PramStore _pramStore;
         public String currentUserId;
         public String currentUserBooks;
         public String title;
         private bool bookFound = false;
-
         private String xmlBookFilePath => "LibraryInventory.xml";
         private String xmlUserFilePath => "UserList.xml";
         private string newDate = DateTime.Now.AddMonths(1).ToShortDateString();
+        #endregion
 
         public BookReturn(PramStore pramStore)
         {
@@ -27,6 +28,7 @@ namespace LibraryAssignment
             currentUserBooks = _pramStore.CurrentUser.UserBooks;
         }
 
+        //Cancel the chosen operation and return to the user home page
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             Close();
@@ -34,6 +36,7 @@ namespace LibraryAssignment
             home.Show();
         }
 
+        //clear text box ready for user input
         private void txtReturn_GotFocus(object sender, RoutedEventArgs e)
         {
             txtReturn.Clear();
@@ -41,52 +44,63 @@ namespace LibraryAssignment
 
         #region return
 
+        //Method to return books. 
         private void btnReturn_Click(object sender, RoutedEventArgs e)
         {
-            XmlDocument xmlDocument = new XmlDocument();
-            xmlDocument.Load(xmlBookFilePath);
+            //load xml files. 
+            XmlDocument xmlBookDoc = new XmlDocument();
+            xmlBookDoc.Load(xmlBookFilePath);
 
-            XmlDocument userDocument = new XmlDocument();
-            userDocument.Load(xmlUserFilePath);
+            XmlDocument xmlUserDoc = new XmlDocument();
+            xmlUserDoc.Load(xmlUserFilePath);
 
-            XmlNodeList bookNodes = xmlDocument.DocumentElement.SelectNodes("/library/book");
-            XmlNodeList userNodes = userDocument.DocumentElement.SelectNodes("/catalog/User");
+            //create list of nodes from xml files. 
+            XmlNodeList bookNodes = xmlBookDoc.DocumentElement.SelectNodes("/library/book");
+            XmlNodeList userNodes = xmlUserDoc.DocumentElement.SelectNodes("/catalog/User");
 
-            foreach (XmlNode book in bookNodes)
+            //loop through to check against each book ID node and check if it matches the one entered by the user. 
+            foreach (XmlNode bookNode in bookNodes)
             {
-                XmlNode bookId = book.SelectSingleNode("bookId");
+                XmlNode bookId = bookNode.SelectSingleNode("bookId");
 
+                //if they match, remove the "checkedout"" node and grab the title. Display a message box to inform the user their command has been successful. 
                 if (txtReturn.Text == bookId.InnerText)
                 {
-                    XmlNode checkedOut = book.SelectSingleNode("checkedOut");
-                    title = book.SelectSingleNode("title").InnerText;
-                    book.RemoveChild(checkedOut);
+                    XmlNode checkedOut = bookNode.SelectSingleNode("checkedOut");
+                    title = bookNode.SelectSingleNode("title").InnerText;
+                    bookNode.RemoveChild(checkedOut);
                     MessageBox.Show("Successfully returned!");
                     bookFound = true;
                 }
             }
+
+            //if the bookfound boolean never returns true, show an error message. 
             if (bookFound == false)
             {
                 MessageBox.Show("An error has occured \n please contact the librarian");
             }
 
-            foreach (XmlNode user in userNodes)
+            //loop through each user in the xml node list and check if the title of a book they have checked out matches the previously gathered title
+            foreach (XmlNode userNode in userNodes)
             {
-                XmlNode bookTitle = user.SelectSingleNode("/catalog/User/CheckedOut/BookTitle");
-                XmlNode dueDate = user.SelectSingleNode("/catalog/User/CheckedOut/DueDate");
+                XmlNode bookTitle = userNode.SelectSingleNode("/catalog/User/CheckedOut/BookTitle");
+                XmlNode dueDate = userNode.SelectSingleNode("/catalog/User/CheckedOut/DueDate");
 
+                //remove the nodes underneath "checkedout" - note removal of the checked out node itself will break the pramstore. 
                 if (bookTitle != null && bookTitle.InnerText == title)
                 {
                     bookTitle.ParentNode.RemoveChild(bookTitle);
                     dueDate.ParentNode.RemoveChild(dueDate);
                 }
             }
-            xmlDocument.Save(xmlBookFilePath);
-            userDocument.Save(xmlUserFilePath);
+            //Save the files 
+            xmlBookDoc.Save(xmlBookFilePath);
+            xmlUserDoc.Save(xmlUserFilePath);
         }
 
         #endregion return
 
+        #region renew
         private void btnRenew_Click(object sender, RoutedEventArgs e)
         {
             XmlDocument xmlDocument = new XmlDocument();
@@ -100,6 +114,7 @@ namespace LibraryAssignment
 
                 if (txtReturn.Text == bookId.InnerText)
                 {
+                    //instead of removing nodes when found, update the innertext of the checked out node to read one month from the renewal date. 
                     book.SelectSingleNode("checkedOut").InnerText = newDate;
                     MessageBox.Show($"Your new due date is \n {newDate}");
                     bookFound = true;
@@ -111,5 +126,6 @@ namespace LibraryAssignment
                 xmlDocument.Save(xmlBookFilePath);
             }
         }
+        #endregion
     }
 }

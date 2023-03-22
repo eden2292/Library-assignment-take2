@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Account" Height="450" Width="800"  WindowStartupLocation="CenterScreen">
     <Grid Background="#FF71AFE4">
-        <Button x:Name="btnCancel" Content="Cancel" Margin="570,206,102,0" VerticalAlignment="Top" Height="50" Click="btnLogOut_Click" />
+        <Button x:Name="btnCancel" Content="Cancel" Margin="570,206,102,0" VerticalAlignment="Top" Height="50" Click="btnCancel_Click" />
         <TextBox x:Name="txtName" HorizontalAlignment="Left" Height="23" Margin="271,122,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="241" FontSize="20" FontFamily="Global User Interface" />
         <TextBox x:Name="txtPhone" HorizontalAlignment="Left" Height="23" Margin="271,164,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="241" FontSize="20" FontFamily="Global User Interface" />
         <TextBox x:Name="txtEmail" HorizontalAlignment="Left" Height="23" Margin="271,206,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="241" FontSize="20" FontFamily="Global User Interface" />

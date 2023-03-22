@@ -41,6 +41,7 @@ namespace LibraryAssignment
             //Sets the datasource for the datagrid to be the dataset           
             DataView dv = dataSet.Tables[0].DefaultView;
             StringBuilder sb = new StringBuilder();
+            //filter results in the datagrid by information entered into the text box by the user
             foreach (DataColumn column in dv.Table.Columns)
             {
                 sb.AppendFormat("[{0}] Like '%{1}%' OR ", column.ColumnName, txtSearchTitle.Text);
@@ -48,6 +49,7 @@ namespace LibraryAssignment
             sb.Remove(sb.Length - 3, 3);
             dv.RowFilter = sb.ToString();
             dgResults.ItemsSource = dv;
+            //refresh the datagrid to show the filtered results. 
             dgResults.Items.Refresh();
         }
 
@@ -63,11 +65,12 @@ namespace LibraryAssignment
             txtSearchTitle.Clear();
         }
 
-
+        //when the user selects a book from the grid, pull the necessary information from it for the reservation to be made
         private void dgResults_SelectionChanged_1(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
+            //take the whole row from the selected cell
             DataRowView row = dgResults.SelectedItem as DataRowView;
-
+            //locate the cells with title, author and ID information in and add them to a string variable. 
             selectTitle = row.Row.ItemArray[0].ToString();
             selectAuthor = row.Row.ItemArray[1].ToString();
             selectId = row.Row.ItemArray[6].ToString();
@@ -75,26 +78,26 @@ namespace LibraryAssignment
 
         private void btnReserve_Click(object sender, RoutedEventArgs e)
         {
-            XmlDocument xmlDocBook = new XmlDocument();
-            xmlDocBook.Load(xmlBookFilePath);
+            XmlDocument xmlBookDoc = new XmlDocument();
+            xmlBookDoc.Load(xmlBookFilePath);
 
-            XmlDocument xmlDocUser = new XmlDocument();
-            xmlDocUser.Load(xmlUserFilePath);
+            XmlDocument xmlUserDoc = new XmlDocument();
+            xmlUserDoc.Load(xmlUserFilePath);
 
-            XmlNodeList xmlUserNodeList = xmlDocUser.DocumentElement.SelectNodes("/catalog/User");
-            XmlNodeList xmlBookNodeList = xmlDocBook.DocumentElement.SelectNodes("/library/book");
+            XmlNodeList xmlUserNodeList = xmlUserDoc.DocumentElement.SelectNodes("/catalog/User");
+            XmlNodeList xmlBookNodeList = xmlBookDoc.DocumentElement.SelectNodes("/library/book");
 
-            foreach(XmlNode xmlUserNode in xmlUserNodeList)
+            foreach(XmlNode userNode in xmlUserNodeList)
             {
-                XmlNode user = xmlUserNode.SelectSingleNode("UserID");
+                XmlNode user = userNode.SelectSingleNode("UserID");
 
                 if(currentUserId == user.InnerText)
                 {
-                    XmlElement searchTitle = xmlDocUser.CreateElement("Reserved");
+                    XmlElement searchTitle = xmlUserDoc.CreateElement("Reserved");
                     searchTitle.InnerText = selectTitle;
 
-                    xmlUserNode.AppendChild(searchTitle);
-                    xmlUserNode.OwnerDocument.Save(xmlUserFilePath);
+                    userNode.AppendChild(searchTitle);
+                    userNode.OwnerDocument.Save(xmlUserFilePath);
 
                     MessageBox.Show($"successfully reserved \n {selectTitle}");
                 }
@@ -106,7 +109,7 @@ namespace LibraryAssignment
 
                 if (book.InnerText == selectId)
                 {
-                    XmlElement searchId = xmlDocBook.CreateElement("reserved");
+                    XmlElement searchId = xmlBookDoc.CreateElement("reserved");
                     searchId.InnerText = currentUserId;
 
                     xmlBookNode.AppendChild(searchId);

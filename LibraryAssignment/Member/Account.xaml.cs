@@ -10,27 +10,33 @@ namespace LibraryAssignment
     /// </summary>
     public partial class Account : Window
     {
+        /// <summary>
+        /// Create a new readonly pram store. Readonly as this page does not need to edit the stored information. 
+        /// </summary>
         private readonly PramStore _pramStore;
 
-        private String xmlUserFilePath => "UserList.xml";
+        private String XmlUserfilePath => "UserList.xml";
 
         public Account(PramStore pramStore)
         {
             _pramStore = pramStore;
             InitializeComponent();
 
+            //create a data set that holds the information from the xml file to be displayed in a human readable format. 
             DataSet dataSet = new DataSet();
-            dataSet.ReadXml(xmlUserFilePath);
+            dataSet.ReadXml(XmlUserfilePath);
             dgBookOnLoan.ItemsSource = dataSet.Tables[0].DefaultView;
 
+            //pull information on the user from the pramstore to enter into the text boxes
             txtEmail.Text = _pramStore.CurrentUser.UserEmail;
             txtName.Text = _pramStore.CurrentUser.UserName;
             txtPhone.Text = _pramStore.CurrentUser.UserPhone;
 
-            //creates an empty dataset to receive the XML data
-            //Sets the datasource for the datagrid to be the dataset           
+            //Sets the datasource for the datagrid to be the dataset - tables[1] to display the child nodes of the checked out node (one layer deeper)          
             DataView dv = dataSet.Tables[1].DefaultView;
             StringBuilder sb = new StringBuilder();
+
+            //display information in the datagrid, filtered by the name of the user to only display their books. 
             foreach (DataColumn column in dv.Table.Columns)
             {
                 sb.AppendFormat("[{0}] Like '%{1}%' OR ", column.ColumnName, txtName.Text);
@@ -40,7 +46,12 @@ namespace LibraryAssignment
             dgBookOnLoan.Items.Refresh();
         }
 
-        private void btnLogOut_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Return to the home page. 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             Close();
             UserHome home = new UserHome(_pramStore);
