@@ -11,7 +11,7 @@ namespace LibraryAssignment
     public partial class Account : Window
     {
         /// <summary>
-        /// Create a new readonly pram store. Readonly as this page does not need to edit the stored information. 
+        /// Create a new readonly pram store. Readonly as this page does not need to edit the stored information.
         /// </summary>
         private readonly PramStore _pramStore;
 
@@ -22,7 +22,7 @@ namespace LibraryAssignment
             _pramStore = pramStore;
             InitializeComponent();
 
-            //create a data set that holds the information from the xml file to be displayed in a human readable format. 
+            //create a data set that holds the information from the xml file to be displayed in a human readable format.
             DataSet dataSet = new DataSet();
             dataSet.ReadXml(XmlUserfilePath);
             dgBookOnLoan.ItemsSource = dataSet.Tables[0].DefaultView;
@@ -36,7 +36,7 @@ namespace LibraryAssignment
             DataView dv = dataSet.Tables[1].DefaultView;
             StringBuilder sb = new StringBuilder();
 
-            //display information in the datagrid, filtered by the name of the user to only display their books. 
+            //display information in the datagrid, filtered by the name of the user to only display their books.
             foreach (DataColumn column in dv.Table.Columns)
             {
                 sb.AppendFormat("[{0}] Like '%{1}%' OR ", column.ColumnName, txtName.Text);
@@ -47,7 +47,7 @@ namespace LibraryAssignment
         }
 
         /// <summary>
-        /// Return to the home page. 
+        /// Return to the home page.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

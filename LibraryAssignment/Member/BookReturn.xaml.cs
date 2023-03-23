@@ -10,6 +10,7 @@ namespace LibraryAssignment
     public partial class BookReturn : Window
     {
         #region variables
+
         private readonly PramStore _pramStore;
         public String currentUserId;
         public String currentUserBooks;
@@ -18,7 +19,8 @@ namespace LibraryAssignment
         private String xmlBookFilePath => "LibraryInventory.xml";
         private String xmlUserFilePath => "UserList.xml";
         private string newDate = DateTime.Now.AddMonths(1).ToShortDateString();
-        #endregion
+
+        #endregion variables
 
         public BookReturn(PramStore pramStore)
         {
@@ -44,26 +46,26 @@ namespace LibraryAssignment
 
         #region return
 
-        //Method to return books. 
+        //Method to return books.
         private void btnReturn_Click(object sender, RoutedEventArgs e)
         {
-            //load xml files. 
+            //load xml files.
             XmlDocument xmlBookDoc = new XmlDocument();
             xmlBookDoc.Load(xmlBookFilePath);
 
             XmlDocument xmlUserDoc = new XmlDocument();
             xmlUserDoc.Load(xmlUserFilePath);
 
-            //create list of nodes from xml files. 
+            //create list of nodes from xml files.
             XmlNodeList bookNodes = xmlBookDoc.DocumentElement.SelectNodes("/library/book");
             XmlNodeList userNodes = xmlUserDoc.DocumentElement.SelectNodes("/catalog/User");
 
-            //loop through to check against each book ID node and check if it matches the one entered by the user. 
+            //loop through to check against each book ID node and check if it matches the one entered by the user.
             foreach (XmlNode bookNode in bookNodes)
             {
                 XmlNode bookId = bookNode.SelectSingleNode("bookId");
 
-                //if they match, remove the "checkedout"" node and grab the title. Display a message box to inform the user their command has been successful. 
+                //if they match, remove the "checkedout"" node and grab the title. Display a message box to inform the user their command has been successful.
                 if (txtReturn.Text == bookId.InnerText)
                 {
                     XmlNode checkedOut = bookNode.SelectSingleNode("checkedOut");
@@ -74,7 +76,7 @@ namespace LibraryAssignment
                 }
             }
 
-            //if the bookfound boolean never returns true, show an error message. 
+            //if the bookfound boolean never returns true, show an error message.
             if (bookFound == false)
             {
                 MessageBox.Show("An error has occured \n please contact the librarian");
@@ -86,14 +88,14 @@ namespace LibraryAssignment
                 XmlNode bookTitle = userNode.SelectSingleNode("/catalog/User/CheckedOut/BookTitle");
                 XmlNode dueDate = userNode.SelectSingleNode("/catalog/User/CheckedOut/DueDate");
 
-                //remove the nodes underneath "checkedout" - note removal of the checked out node itself will break the pramstore. 
+                //remove the nodes underneath "checkedout" - note removal of the checked out node itself will break the pramstore.
                 if (bookTitle != null && bookTitle.InnerText == title)
                 {
                     bookTitle.ParentNode.RemoveChild(bookTitle);
                     dueDate.ParentNode.RemoveChild(dueDate);
                 }
             }
-            //Save the files 
+            //Save the files
             xmlBookDoc.Save(xmlBookFilePath);
             xmlUserDoc.Save(xmlUserFilePath);
         }
@@ -101,6 +103,7 @@ namespace LibraryAssignment
         #endregion return
 
         #region renew
+
         private void btnRenew_Click(object sender, RoutedEventArgs e)
         {
             XmlDocument xmlDocument = new XmlDocument();
@@ -114,7 +117,7 @@ namespace LibraryAssignment
 
                 if (txtReturn.Text == bookId.InnerText)
                 {
-                    //instead of removing nodes when found, update the innertext of the checked out node to read one month from the renewal date. 
+                    //instead of removing nodes when found, update the innertext of the checked out node to read one month from the renewal date.
                     book.SelectSingleNode("checkedOut").InnerText = newDate;
                     MessageBox.Show($"Your new due date is \n {newDate}");
                     bookFound = true;
@@ -126,6 +129,7 @@ namespace LibraryAssignment
                 xmlDocument.Save(xmlBookFilePath);
             }
         }
-        #endregion
+
+        #endregion renew
     }
 }

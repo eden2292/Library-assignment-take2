@@ -12,6 +12,7 @@ namespace LibraryAssignment
     public partial class Search : Window
     {
         #region variables
+
         private readonly PramStore _pramStore;
         private String xmlBookFilePath => "LibraryInventory.xml";
         private String xmlUserFilePath => "UserList.xml";
@@ -19,7 +20,8 @@ namespace LibraryAssignment
         public String selectTitle;
         public String selectAuthor;
         public String selectId;
-        #endregion
+
+        #endregion variables
 
         public Search(PramStore _pramStore)
         {
@@ -49,7 +51,7 @@ namespace LibraryAssignment
             sb.Remove(sb.Length - 3, 3);
             dv.RowFilter = sb.ToString();
             dgResults.ItemsSource = dv;
-            //refresh the datagrid to show the filtered results. 
+            //refresh the datagrid to show the filtered results.
             dgResults.Items.Refresh();
         }
 
@@ -70,7 +72,7 @@ namespace LibraryAssignment
         {
             //take the whole row from the selected cell
             DataRowView row = dgResults.SelectedItem as DataRowView;
-            //locate the cells with title, author and ID information in and add them to a string variable. 
+            //locate the cells with title, author and ID information in and add them to a string variable.
             selectTitle = row.Row.ItemArray[0].ToString();
             selectAuthor = row.Row.ItemArray[1].ToString();
             selectId = row.Row.ItemArray[6].ToString();
@@ -87,11 +89,11 @@ namespace LibraryAssignment
             XmlNodeList xmlUserNodeList = xmlUserDoc.DocumentElement.SelectNodes("/catalog/User");
             XmlNodeList xmlBookNodeList = xmlBookDoc.DocumentElement.SelectNodes("/library/book");
 
-            foreach(XmlNode userNode in xmlUserNodeList)
+            foreach (XmlNode userNode in xmlUserNodeList)
             {
                 XmlNode user = userNode.SelectSingleNode("UserID");
 
-                if(currentUserId == user.InnerText)
+                if (currentUserId == user.InnerText)
                 {
                     XmlElement searchTitle = xmlUserDoc.CreateElement("Reserved");
                     searchTitle.InnerText = selectTitle;
@@ -103,7 +105,7 @@ namespace LibraryAssignment
                 }
             }
 
-            foreach(XmlNode xmlBookNode in xmlBookNodeList)
+            foreach (XmlNode xmlBookNode in xmlBookNodeList)
             {
                 XmlNode book = xmlBookNode.SelectSingleNode("bookId");
 

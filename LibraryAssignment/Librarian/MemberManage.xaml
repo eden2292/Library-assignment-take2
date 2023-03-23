@@ -7,6 +7,5 @@
         mc:Ignorable="d"
         Title="MemberManage" Height="450" Width="800">
     <Grid Background="#FF71AFE4">
-        
     </Grid>
 </Window>

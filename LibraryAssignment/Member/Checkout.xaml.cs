@@ -10,6 +10,7 @@ namespace LibraryAssignment
     public partial class Checkout : Window
     {
         #region variables
+
         private readonly PramStore _pramStore;
         public String currentUserId;
         public String currentUserBooks;
@@ -17,9 +18,13 @@ namespace LibraryAssignment
 
         private String xmlBookFilePath => "LibraryInventory.xml";
         private String xmlUserFilePath => "UserList.xml";
-        // take the current date time and add a month to it, then remove the time part. 
+
+        // take the current date time and add a month to it, then remove the time part.
         private string dueDate = DateTime.Now.AddMonths(1).ToShortDateString();
-        #endregion 
+
+        #endregion variables
+
+
 
         public Checkout(PramStore pramStore)
         {
@@ -29,13 +34,13 @@ namespace LibraryAssignment
             currentUserBooks = _pramStore.CurrentUser.UserBooks;
         }
 
-        //clear textbox ready for user entry. 
+        //clear textbox ready for user entry.
         private void txtCheckoutBookId_GotFocus(object sender, RoutedEventArgs e)
         {
             txtCheckoutBookId.Clear();
         }
-        
-        //cancel operation and return to the user home page. 
+
+        //cancel operation and return to the user home page.
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             Close();
@@ -43,7 +48,7 @@ namespace LibraryAssignment
             home.Show();
         }
 
-        //method to checkout books. 
+        //method to checkout books.
         private void btnCheckoutBook_Click(object sender, RoutedEventArgs e)
         {
             //load xml documents
@@ -56,7 +61,7 @@ namespace LibraryAssignment
             //create list of nodes within the xml file
             XmlNodeList xmlBookNodeList = xmlBookDoc.DocumentElement.SelectNodes("/library/book");
 
-            //booleans to that will change to true when the book is found and if it is not already checked out. 
+            //booleans to that will change to true when the book is found and if it is not already checked out.
             bool bookFound = false;
             bool bookAvailable = false;
 
@@ -68,13 +73,13 @@ namespace LibraryAssignment
 
                 if (txtCheckoutBookId.Text == bookId.InnerText && checkedOut == null)
                 {
-                    //create a new element in the xml file to hold the date the book is due back. 
+                    //create a new element in the xml file to hold the date the book is due back.
                     XmlElement newElem = xmlBookDoc.CreateElement("checkedOut");
                     newElem.InnerText = dueDate;
 
                     bookNode.AppendChild(newElem);
 
-                    if(bookNode.SelectSingleNode("reserved") != null)
+                    if (bookNode.SelectSingleNode("reserved") != null)
                     {
                         XmlNode reserved = bookNode.SelectSingleNode("reserved");
                         bookNode.RemoveChild(reserved);

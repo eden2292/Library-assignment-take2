@@ -56,8 +56,6 @@ namespace LibraryAssignment
             lblReportsInfo.Visibility = Visibility.Hidden;
         }
 
-        
-
         #endregion Label_Controls
 
         private void btnLogOut_Click(object sender, RoutedEventArgs e)
@@ -87,6 +85,5 @@ namespace LibraryAssignment
             AllReports reports = new AllReports();
             reports.Show();
         }
-
     }
 }
