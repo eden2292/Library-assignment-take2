@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LibraryAssignment.Librarian"
         mc:Ignorable="d"
-        Title="Fines" Height="450" Width="800">
+        Title="Fines" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid Background="#FF71AFE4">
     </Grid>
 </Window>

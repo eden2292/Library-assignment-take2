@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LibraryAssignment"
         mc:Ignorable="d"
-        Title="BookManage" Height="450" Width="800">
+        Title="BookManage" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid Background="#FF71AFE4">
         <TextBlock Margin="262,21,261,0" TextWrapping="Wrap" Text="Manage" VerticalAlignment="Top" FontFamily="Global User Interface" FontSize="72" Foreground="White" />
         <TextBox x:Name="txtManTitle" HorizontalAlignment="Left" Height="23" Margin="123,136,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" />
@@ -22,8 +22,8 @@
         <TextBlock HorizontalAlignment="Left" Margin="34,275,0,0" TextWrapping="Wrap" Text="Category:" VerticalAlignment="Top" FontFamily="Global User Interface" FontSize="20" Foreground="White" />
         <Button x:Name="btnManAdd" Content="Add" HorizontalAlignment="Left" Margin="146,309,0,0" VerticalAlignment="Top" Width="75" Click="btnManAdd_Click" />
         <Button x:Name="btnManRemove" Content="Remove" HorizontalAlignment="Left" Margin="146,334,0,0" VerticalAlignment="Top" Width="75" />
-        <Button x:Name="btnManUpdate" Content="Update" HorizontalAlignment="Left" Margin="146,359,0,0" VerticalAlignment="Top" Width="75" />
-        <DataGrid HorizontalAlignment="Left" Height="243" Margin="262,136,0,0" VerticalAlignment="Top" Width="469" />
+        <Button x:Name="btnManUpdate" Content="Update" HorizontalAlignment="Left" Margin="146,359,0,0" VerticalAlignment="Top" Width="75" Click="btnManUpdate_Click" />
+        <DataGrid x:Name="dgLibraryInventory" HorizontalAlignment="Left" Height="243" Margin="262,136,0,0" VerticalAlignment="Top" Width="469" SelectionChanged="dgLibraryInventory_SelectionChanged" />
         <Image HorizontalAlignment="Left" Height="115" Margin="10,10,0,0" VerticalAlignment="Top" Width="119" Source="BookImage.png" />
     </Grid>
 </Window>
