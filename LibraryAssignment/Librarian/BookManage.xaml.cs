@@ -23,7 +23,6 @@ namespace LibraryAssignment
         #region variables
 
         private String xmlBookFilePath => "LibraryInventory.xml";
-        private List<BookDetails> books = new List<BookDetails>();
 
         private String selectTitle;
         private String selectAuthor;
@@ -35,6 +34,13 @@ namespace LibraryAssignment
 
         #endregion variables
 
+        private void updateDatagrid()
+        {
+            DataSet dataset = new DataSet();
+            dataset.ReadXml(xmlBookFilePath);
+            dgLibraryInventory.ItemsSource = dataset.Tables[0].DefaultView;
+            dgLibraryInventory.Items.Refresh();
+        }
         private void btnManAdd_Click(object sender, RoutedEventArgs e)
         {
             XmlDocument xmlDocBooks = new XmlDocument();
@@ -76,29 +82,32 @@ namespace LibraryAssignment
 
             MessageBox.Show($"Success. \n Book ID is {id} \n Write in before continuing.");
 
-            DataSet dataset = new DataSet();
-            dataset.ReadXml(xmlBookFilePath);
-            dgLibraryInventory.ItemsSource = dataset.Tables[0].DefaultView;
-            dgLibraryInventory.Items.Refresh();
+            updateDatagrid();
         }
 
         private void dgLibraryInventory_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             DataRowView row = dgLibraryInventory.SelectedItem as DataRowView;
 
-            selectTitle = row.Row.ItemArray[0].ToString();
-            selectAuthor = row.Row.ItemArray[1].ToString();
-            selectYear = row.Row.ItemArray[2].ToString();
-            selectPublisher = row.Row.ItemArray[3].ToString();
-            selectIsbn = row.Row.ItemArray[4].ToString();
-            selectCategory = row.Row.ItemArray[5].ToString();
+            if((row!=null))
+            { 
+                selectTitle = row.Row.ItemArray[0].ToString();
+                selectAuthor = row.Row.ItemArray[1].ToString();
+                selectYear = row.Row.ItemArray[2].ToString();
+                selectPublisher = row.Row.ItemArray[3].ToString();
+                selectIsbn = row.Row.ItemArray[4].ToString();
+                selectCategory = row.Row.ItemArray[5].ToString();
+                selectId = row.Row.ItemArray[6].ToString();
 
-            txtManTitle.Text = selectTitle;
-            txtManAuthor.Text = selectAuthor;
-            txtManYear.Text = selectYear;
-            txtManPublisher.Text = selectPublisher;
-            txtManIsbn.Text = selectIsbn;
-            txtManCategory.Text = selectCategory;
+                txtManTitle.Text = selectTitle;
+                txtManAuthor.Text = selectAuthor;
+                txtManYear.Text = selectYear;
+                txtManPublisher.Text = selectPublisher;
+                txtManIsbn.Text = selectIsbn;
+                txtManCategory.Text = selectCategory;
+
+            }
+         
         }
 
         private void btnManUpdate_Click(object sender, RoutedEventArgs e)
@@ -106,7 +115,7 @@ namespace LibraryAssignment
             XmlDocument xmlDocBooks = new XmlDocument();
             xmlDocBooks.Load(xmlBookFilePath);
 
-            XmlNode oldBook = xmlDocBooks.SelectSingleNode("//book[title ='" + selectTitle + "']"); ;
+            XmlNode oldBook = xmlDocBooks.SelectSingleNode("//book[title ='" + selectTitle + "']"); 
 
             oldBook.ChildNodes.Item(0).InnerText = txtManTitle.Text;
             oldBook.ChildNodes.Item(1).InnerText = txtManAuthor.Text;
@@ -115,12 +124,32 @@ namespace LibraryAssignment
             oldBook.ChildNodes.Item(4).InnerText = txtManIsbn.Text;
             oldBook.ChildNodes.Item(5).InnerText = txtManCategory.Text;
 
+            xmlDocBooks.Save(xmlBookFilePath);
             MessageBox.Show("Success!");
 
-            DataSet dataset = new DataSet();
-            dataset.ReadXml(xmlBookFilePath);
-            dgLibraryInventory.ItemsSource = dataset.Tables[0].DefaultView;
-            dgLibraryInventory.Items.Refresh();
+            updateDatagrid();
+        }
+
+        private void btnManRemove_Click(object sender, RoutedEventArgs e)
+        {
+            XmlDocument xmlDocBooks = new XmlDocument();
+            xmlDocBooks.Load(xmlBookFilePath);
+
+            XmlNode book = xmlDocBooks.SelectSingleNode("//book[bookId = '" + selectId + "']");
+
+            book.ParentNode.RemoveChild(book);
+
+            xmlDocBooks.Save(xmlBookFilePath);
+            MessageBox.Show("Success!");
+
+            updateDatagrid();
+        }
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+            StaffHome staffHome = new StaffHome();
+            staffHome.Show();
         }
     }
 }

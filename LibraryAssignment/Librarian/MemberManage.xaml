@@ -7,5 +7,23 @@
         mc:Ignorable="d"
         Title="MemberManage" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid Background="#FF71AFE4">
+        <TextBlock Margin="165,22,24,0" TextWrapping="Wrap" Text="Manage Accounts" VerticalAlignment="Top" FontFamily="Global User Interface" FontSize="72" Foreground="White" />
+        <Image HorizontalAlignment="Left" Height="115" Margin="10,10,0,0" VerticalAlignment="Top" Width="119" Source="BookImage.png" />
+        <TextBox x:Name="txtManName" HorizontalAlignment="Left" Height="23" Margin="123,136,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="216" />
+        <TextBox x:Name="txtManEmail" HorizontalAlignment="Left" Height="23" Margin="123,164,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="216" />
+        <TextBox x:Name="txtManTelephone" HorizontalAlignment="Left" Height="23" Margin="123,192,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="216" />
+        <TextBox x:Name="txtManFines" HorizontalAlignment="Left" Height="23" Margin="123,220,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="216" />
+        <TextBox x:Name="txtManTag" HorizontalAlignment="Left" Height="23" Margin="123,248,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="216" />
+        <TextBlock HorizontalAlignment="Left" Margin="61,136,0,0" TextWrapping="Wrap" Text="Name:" VerticalAlignment="Top" FontFamily="Global User Interface" FontSize="20" Foreground="White" />
+        <TextBlock HorizontalAlignment="Left" Margin="66,164,0,0" TextWrapping="Wrap" Text="Email:" VerticalAlignment="Top" FontFamily="Global User Interface" FontSize="20" Foreground="White" />
+        <TextBlock HorizontalAlignment="Left" Margin="23,191,0,0" TextWrapping="Wrap" Text="Telephone:" VerticalAlignment="Top" FontFamily="Global User Interface" FontSize="20" Foreground="White" />
+        <TextBlock HorizontalAlignment="Left" Margin="69,219,0,0" TextWrapping="Wrap" Text="Fines:" VerticalAlignment="Top" FontFamily="Global User Interface" FontSize="20" Foreground="White" />
+        <TextBlock HorizontalAlignment="Left" Margin="83,248,0,0" TextWrapping="Wrap" Text="Tag:" VerticalAlignment="Top" FontFamily="Global User Interface" FontSize="20" Foreground="White" />
+        <Button x:Name="btnMemAdd" Content="Add" HorizontalAlignment="Left" Margin="145,289,0,0" VerticalAlignment="Top" Width="75" Click="btnMemAdd_Click" />
+        <Button x:Name="btnMemRemove" Content="Remove" HorizontalAlignment="Left" Margin="145,314,0,0" VerticalAlignment="Top" Width="75" Click="btnMemRemove_Click" />
+        <Button x:Name="btnMemUpdate" Content="Update" HorizontalAlignment="Left" Margin="145,339,0,0" VerticalAlignment="Top" Width="75" Click="btnMemUpdate_Click" />
+        <DataGrid x:Name="dgUserInformation" HorizontalAlignment="Left" Height="243" Margin="360,136,0,0" VerticalAlignment="Top" Width="371" SelectionChanged="dgUserInformation_SelectionChanged" />
+        <Image HorizontalAlignment="Left" Height="115" Margin="10,10,0,0" VerticalAlignment="Top" Width="119" Source="BookImage.png" />
+        <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="145,364,0,0" VerticalAlignment="Top" Width="75" Click="btnCancel_Click" />
     </Grid>
 </Window>
