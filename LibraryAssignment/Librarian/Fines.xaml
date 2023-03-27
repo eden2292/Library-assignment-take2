@@ -7,5 +7,21 @@
         mc:Ignorable="d"
         Title="Fines" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid Background="#FF71AFE4">
+        <TextBlock Margin="320,22,292,0" TextWrapping="Wrap" Text="Fines" VerticalAlignment="Top" FontFamily="Global User Interface" FontSize="72" Foreground="White" />
+        <Image HorizontalAlignment="Left" Height="115" Margin="10,10,0,0" VerticalAlignment="Top" Width="119" Source="/LibraryAssignment;component/Member/BookImage.png" />
+        <DataGrid x:Name="dgUserFines" HorizontalAlignment="Left" Height="210" Margin="335,113,0,0" VerticalAlignment="Top" Width="425" SelectionChanged="dgUserFines_SelectionChanged" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
+                <DataGridTextColumn Header="Email" Binding="{Binding Email}"/>
+                <DataGridTextColumn Header="Telephone" Binding="{Binding Telephone}"/>
+                <DataGridTextColumn Header="Fines" Binding="{Binding Fines}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+        <TextBox x:Name="txtUserEmail" HorizontalAlignment="Left" Height="23" Margin="25,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="281"/>
+        <TextBox x:Name="txtEmailTemplate" HorizontalAlignment="Left" Height="152" Margin="25,171,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="281"/>
+        <Button x:Name="btnSend" Content="Send" HorizontalAlignment="Left" Margin="54,342,0,0" VerticalAlignment="Top" Width="104" Height="42" Click="btnSend_Click"/>
+        <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="174,342,0,0" VerticalAlignment="Top" Width="104" Height="42" Click="btnCancel_Click"/>
     </Grid>
 </Window>

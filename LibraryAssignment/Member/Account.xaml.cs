@@ -39,7 +39,7 @@ namespace LibraryAssignment
             //display information in the datagrid, filtered by the name of the user to only display their books.
             foreach (DataColumn column in dv.Table.Columns)
             {
-                sb.AppendFormat("[{0}] Like '%{1}%' OR ", column.ColumnName, txtName.Text);
+                sb.AppendFormat("[{0}] Like '%{1}%' OR ", column.ColumnName, _pramStore.CurrentUser.UserId);
             }
             sb.Remove(sb.Length - 3, 3);
             dgBookOnLoan.ItemsSource = dv;

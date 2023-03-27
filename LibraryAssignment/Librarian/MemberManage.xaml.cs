@@ -86,15 +86,15 @@ namespace LibraryAssignment
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             Close();
-            MainWindow main = new MainWindow();
-            main.Show();
+            StaffHome staffHome = new StaffHome();
+            staffHome.Show();
         }
 
         private void dgUserInformation_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             DataRowView row = dgUserInformation.SelectedItem as DataRowView;
 
-            if ((row != null))
+            if (row != null)
             {
                 selectName = row.Row.ItemArray[1].ToString();
                 selectEmail = row.Row.ItemArray[2].ToString();

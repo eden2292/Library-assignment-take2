@@ -31,6 +31,7 @@ namespace LibraryAssignment
         private String selectIsbn;
         private String selectCategory;
         private String selectId;
+        private String selectValue;
 
         #endregion variables
 
@@ -56,6 +57,7 @@ namespace LibraryAssignment
             XmlNode publisherNode = xmlDocBooks.CreateElement("publisher");
             XmlNode isbnNode = xmlDocBooks.CreateElement("isbn");
             XmlNode categoryNode = xmlDocBooks.CreateElement("category");
+            XmlNode valueNode = xmlDocBooks.CreateElement("value");
             XmlNode bookIdNode = xmlDocBooks.CreateElement("bookId");
 
             titleNode.InnerText = txtManTitle.Text;
@@ -64,6 +66,7 @@ namespace LibraryAssignment
             publisherNode.InnerText = txtManPublisher.Text;
             isbnNode.InnerText = txtManIsbn.Text;
             categoryNode.InnerText = txtManCategory.Text;
+            valueNode.InnerText = txtManValue.Text;
             bookIdNode.InnerText = id;
 
             parentNode.AppendChild(titleNode);
@@ -72,6 +75,7 @@ namespace LibraryAssignment
             parentNode.AppendChild(publisherNode);
             parentNode.AppendChild(isbnNode);
             parentNode.AppendChild(categoryNode);
+            parentNode.AppendChild(valueNode);
             parentNode.AppendChild(bookIdNode);
 
             XmlNode ROOT = xmlDocBooks.SelectSingleNode("library");
@@ -97,7 +101,8 @@ namespace LibraryAssignment
                 selectPublisher = row.Row.ItemArray[3].ToString();
                 selectIsbn = row.Row.ItemArray[4].ToString();
                 selectCategory = row.Row.ItemArray[5].ToString();
-                selectId = row.Row.ItemArray[6].ToString();
+                selectValue = row.Row.ItemArray[6].ToString();
+                selectId = row.Row.ItemArray[7].ToString();
 
                 txtManTitle.Text = selectTitle;
                 txtManAuthor.Text = selectAuthor;
@@ -105,6 +110,7 @@ namespace LibraryAssignment
                 txtManPublisher.Text = selectPublisher;
                 txtManIsbn.Text = selectIsbn;
                 txtManCategory.Text = selectCategory;
+                txtManValue.Text = selectValue;
 
             }
          
@@ -123,6 +129,7 @@ namespace LibraryAssignment
             oldBook.ChildNodes.Item(3).InnerText = txtManPublisher.Text;
             oldBook.ChildNodes.Item(4).InnerText = txtManIsbn.Text;
             oldBook.ChildNodes.Item(5).InnerText = txtManCategory.Text;
+            oldBook.ChildNodes.Item(6).InnerText = txtManValue.Text;
 
             xmlDocBooks.Save(xmlBookFilePath);
             MessageBox.Show("Success!");

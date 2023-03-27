@@ -85,5 +85,12 @@ namespace LibraryAssignment
             AllReports reports = new AllReports();
             reports.Show();
         }
+
+        private void btnFines_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+            Fines fines = new Fines();
+            fines.Show();
+        }
     }
 }
