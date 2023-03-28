@@ -33,6 +33,7 @@ namespace LibraryAssignment
         private bool AccessSuccess;
 
         private bool ReservationAvailable;
+        public DateTime DueDate;
 
         #endregion variables
 
@@ -64,6 +65,14 @@ namespace LibraryAssignment
                     //find any instances of "Tag" in the users information - only one per user.
                     XmlNode tag = xmlUserNode.SelectSingleNode("Tag");
 
+                    if (xmlUserNode.SelectSingleNode("/CheckedOut/DueDate") != null)
+                    {
+                        DueDate = Convert.ToDateTime(xmlUserNode.SelectSingleNode("/CheckedOut/DueDate").InnerText);
+                    }
+                    else
+                    {
+                        DueDate = DateTime.Now;
+                    }
                     //store user information in the global parameters (PramStore.cs)
                     _pramStore.CurrentUser = new UserDetails
                     {
@@ -73,6 +82,7 @@ namespace LibraryAssignment
                         UserBooks = xmlUserNode.SelectSingleNode("CheckedOut").InnerText,
                         UserId = id.InnerText,
                         UserTag = tag.InnerText,
+                        UserDueDate = DueDate,
                     };
 
                     //check if the user has any reserved books. If their reserved book is not checked out, boolean switches.

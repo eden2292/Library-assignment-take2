@@ -2,6 +2,7 @@
 using System.Data;
 using System.Text;
 using System.Windows;
+using System.Xml;
 
 namespace LibraryAssignment
 {
@@ -31,6 +32,25 @@ namespace LibraryAssignment
             txtEmail.Text = _pramStore.CurrentUser.UserEmail;
             txtName.Text = _pramStore.CurrentUser.UserName;
             txtPhone.Text = _pramStore.CurrentUser.UserPhone;
+            txtFines.Text = _pramStore.CurrentUser.UserFines;
+
+            XmlDocument xmlUserDoc = new XmlDocument();
+            xmlUserDoc.Load(XmlUserfilePath);
+
+            XmlNodeList userNodes = xmlUserDoc.DocumentElement.SelectNodes("/catalog/User");
+
+            foreach(XmlNode xmlUserNode in userNodes)
+            {
+                XmlNode id = xmlUserNode.SelectSingleNode("UserID");
+
+                if (_pramStore.CurrentUser.UserId == id.InnerText && _pramStore.CurrentUser.UserDueDate != null && _pramStore.CurrentUser.UserDueDate < DateTime.Now)
+                {
+                  
+                        MessageBox.Show("WORKED");
+                    
+
+                }
+            }
 
             //Sets the datasource for the datagrid to be the dataset - tables[1] to display the child nodes of the checked out node (one layer deeper)          
             DataView dv = dataSet.Tables[1].DefaultView;
