@@ -6,8 +6,9 @@
     <publisher>J. B. Lippincott Co.</publisher>
     <isbn>9780061120084</isbn>
     <category>Classic</category>
+    <value>8.99</value>
     <bookId>1807</bookId>
-    <checkedOut>20/04/2023</checkedOut>
+    <checkedOut>14/03/2023</checkedOut>
   </book>
   <book>
     <title>The Great Gatsby</title>
@@ -16,6 +17,7 @@
     <publisher>Charles Scribner's Sons</publisher>
     <isbn>9780743273565</isbn>
     <category>Classic</category>
+    <value>7.99</value>
     <bookId>7906</bookId>
   </book>
   <book>
@@ -25,6 +27,7 @@
     <publisher>Little, Brown and Company</publisher>
     <isbn>9780316769488</isbn>
     <category>Classic</category>
+    <value>9.99</value>
     <bookId>0965</bookId>
   </book>
   <book>
@@ -34,6 +37,7 @@
     <publisher>Secker Warburg</publisher>
     <isbn>9780451524935</isbn>
     <category>Classic</category>
+    <value>7.99</value>
     <bookId>7427</bookId>
   </book>
   <book>
@@ -43,6 +47,7 @@
     <publisher>George Allen Unwin</publisher>
     <isbn>9780618260300</isbn>
     <category>Fantasy</category>
+    <value>8.99</value>
     <bookId>3791</bookId>
   </book>
   <book>
@@ -52,6 +57,7 @@
     <publisher>George Allen Unwin</publisher>
     <isbn>9780395489321</isbn>
     <category>Fantasy</category>
+    <value>22.00</value>
     <bookId>5942</bookId>
   </book>
   <book>
@@ -61,6 +67,7 @@
     <publisher>T. Egerton, Whitehall</publisher>
     <isbn>9780141439518</isbn>
     <category>Classic</category>
+    <value>9.99</value>
     <bookId>9331</bookId>
   </book>
   <book>
@@ -70,6 +77,7 @@
     <publisher>Harvest Books</publisher>
     <isbn>9780156907392</isbn>
     <category>Modernist</category>
+    <value>10.99</value>
     <bookId>0689</bookId>
   </book>
   <book>
@@ -79,6 +87,7 @@
     <publisher>Thomas Cautley Newby</publisher>
     <isbn>9780141439556</isbn>
     <category>Classic</category>
+    <value>7.46</value>
     <bookId>6308</bookId>
   </book>
   <book>
@@ -88,6 +97,7 @@
     <publisher>Ward, Lock, and Company</publisher>
     <isbn>9780141439570</isbn>
     <category>Classic</category>
+    <value>5.45</value>
     <bookId>3480</bookId>
   </book>
   <book>
@@ -97,6 +107,7 @@
     <publisher>Lackington, Hughes, Harding, Mavor, Jones</publisher>
     <isbn>9780141439471</isbn>
     <category>Classic</category>
+    <value>6.79</value>
     <bookId>0081</bookId>
   </book>
   <book>
@@ -106,6 +117,7 @@
     <publisher>Archibald Constable and Company</publisher>
     <isbn>9780141439846</isbn>
     <category>Classic</category>
+    <value>11.99</value>
     <bookId>0556</bookId>
   </book>
   <book>
@@ -115,6 +127,7 @@
     <publisher>John Murray</publisher>
     <isbn>9780141439587</isbn>
     <category>Classic</category>
+    <value>8.99</value>
     <bookId>1438</bookId>
   </book>
   <book>
@@ -124,6 +137,7 @@
     <publisher>Ticknor, Reed, and Fields</publisher>
     <isbn>9780486280486</isbn>
     <category>Classic</category>
+    <value>10.99</value>
     <bookId>0710</bookId>
   </book>
   <book>
@@ -133,6 +147,7 @@
     <publisher>Chatto Windus</publisher>
     <isbn>9780486411093</isbn>
     <category>Classic</category>
+    <value>7.25</value>
     <bookId>4919</bookId>
   </book>
   <book>
@@ -142,6 +157,7 @@
     <publisher>Roberts Brothers</publisher>
     <isbn>9780143106654</isbn>
     <category>Classic</category>
+    <value>10.99</value>
     <bookId>3716</bookId>
   </book>
   <book>
@@ -151,6 +167,7 @@
     <publisher>Contact Publishing</publisher>
     <isbn>9780141315192</isbn>
     <category>Non-fiction</category>
+    <value>8.99</value>
     <bookId>1021</bookId>
   </book>
   <book>
@@ -160,6 +177,7 @@
     <publisher>Heinemann</publisher>
     <isbn>9780553213386</isbn>
     <category>Science Fiction</category>
+    <value>12.99</value>
     <bookId>2584</bookId>
   </book>
   <book>
@@ -169,6 +187,7 @@
     <publisher>Pearson's Weekly</publisher>
     <isbn>9780451531674</isbn>
     <category>Science Fiction</category>
+    <value>6.99</value>
     <bookId>1468</bookId>
   </book>
   <book>
@@ -178,6 +197,7 @@
     <publisher>Blackwood's Magazine</publisher>
     <isbn>9780141441672</isbn>
     <category>Classic</category>
+    <value>7.39</value>
     <bookId>7805</bookId>
   </book>
   <book>
@@ -187,6 +207,7 @@
     <publisher>Viking Press</publisher>
     <isbn>9780140385724</isbn>
     <category>Young Adult</category>
+    <value>8.99</value>
     <bookId>9006</bookId>
   </book>
   <book>
@@ -196,6 +217,7 @@
     <publisher>Dutton Books</publisher>
     <isbn>9780525478812</isbn>
     <category>Young Adult</category>
+    <value>8.99</value>
     <bookId>5483</bookId>
   </book>
   <book>
@@ -205,6 +227,7 @@
     <publisher>George Newnes Ltd.</publisher>
     <isbn>9780140439070</isbn>
     <category>Mystery</category>
+    <value>16.99</value>
     <bookId>8834</bookId>
   </book>
   <book>
@@ -214,6 +237,7 @@
     <publisher>George Newnes Ltd.</publisher>
     <isbn>9780199536967</isbn>
     <category>Mystery</category>
+    <value>5.99</value>
     <bookId>1746</bookId>
   </book>
   <book>
@@ -223,6 +247,7 @@
     <publisher>William Heinemann</publisher>
     <isbn>9780812505047</isbn>
     <category>Science Fiction</category>
+    <value>10.99</value>
     <bookId>5148</bookId>
   </book>
   <book>
@@ -232,6 +257,7 @@
     <publisher>Longmans, Green and Co.</publisher>
     <isbn>9780486266886</isbn>
     <category>Classic</category>
+    <value>6.99</value>
     <bookId>9802</bookId>
   </book>
   <book>
@@ -241,6 +267,7 @@
     <publisher>G. B. Cioffi, Pescia</publisher>
     <isbn>9780679417996</isbn>
     <category>Children's literature</category>
+    <value>10.99</value>
     <bookId>1948</bookId>
   </book>
 </library>

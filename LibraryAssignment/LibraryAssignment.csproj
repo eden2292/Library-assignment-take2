@@ -176,5 +176,8 @@
   <ItemGroup>
     <Resource Include="Member\BookImage.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="LibraryInventory.xml" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
