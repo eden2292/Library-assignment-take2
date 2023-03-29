@@ -24,6 +24,7 @@ namespace LibraryAssignment
         /// Variables to hold the locations of xml file for users. If name changes, change in this location.
         /// </summary>
         private String xmlUserFilePath => "UserList.xml";
+
         /// <summary>
         /// Variables to hold the locations of xml file for books. If name changes, change in this location.
         /// </summary>
@@ -66,7 +67,7 @@ namespace LibraryAssignment
                     XmlNode tag = xmlUserNode.SelectSingleNode("Tag");
 
                     XmlNode fines = xmlUserNode.SelectSingleNode("Fines");
-                    if(fines != null)
+                    if (fines != null)
                     {
                         fine = fines.InnerText;
                     }

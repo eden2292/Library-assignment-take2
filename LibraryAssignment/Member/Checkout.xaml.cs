@@ -24,8 +24,6 @@ namespace LibraryAssignment
 
         #endregion variables
 
-
-
         public Checkout(PramStore pramStore)
         {
             _pramStore = pramStore;

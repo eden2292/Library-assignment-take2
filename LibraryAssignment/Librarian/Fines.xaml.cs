@@ -1,14 +1,8 @@
 ﻿using System;
 using System.Data;
-using System.Text;
+using System.Net.Mail;
 using System.Windows;
 using System.Windows.Controls;
-using System.Xml;
-using System.Net.Mail;
-using System.Net;
-using System.Diagnostics;
-using System.Net.Mime;
-
 
 namespace LibraryAssignment.Librarian
 {
@@ -26,7 +20,8 @@ namespace LibraryAssignment.Librarian
 
         private String today = DateTime.Now.ToShortDateString();
 
-        #endregion
+        #endregion variables
+
         public Fines()
         {
             InitializeComponent();
@@ -35,7 +30,6 @@ namespace LibraryAssignment.Librarian
             dataset.ReadXml(XmlUserfilePath);
             dgUserFines.ItemsSource = dataset.Tables[0].DefaultView;
         }
-
 
         private void dgUserFines_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -49,8 +43,17 @@ namespace LibraryAssignment.Librarian
 
                 txtUserEmail.Text = selectEmail;
 
-                txtEmailTemplate.Text = $"Dear {selectName}, \n We are writing to inform you that you have books that are overdue. \n Please note that your current fine total is {selectFine}. " +
-                    $"\n please endeavour to return these items to the library as soon as possible, or you will incur further charges. \n Regards, The library team";
+                if (selectFine != "0")
+                {
+                    txtEmailTemplate.Text = $"Dear {selectName}, \n We are writing to inform you that you have books that are overdue. \n Please note that your current fine total is {selectFine}. " +
+                        $"\n please endeavour to return these items to the library as soon as possible, or you will incur further charges. \n Regards, The library team";
+                    btnSend.IsEnabled = true;
+                }
+                else if (selectFine == "0")
+                {
+                    txtEmailTemplate.Text = "This user does not have a fine. Do not send notice.";
+                    btnSend.IsEnabled = false;
+                }
             }
         }
 
@@ -71,6 +74,6 @@ namespace LibraryAssignment.Librarian
             //this is where the code goes to send emails, however I am unable to do this without my own SMTP server.
 
             MessageBox.Show("email notice sent");
-        }        
+        }
     }
 }

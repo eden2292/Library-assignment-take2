@@ -13,9 +13,9 @@ namespace LibraryAssignment
         private PramStore _pramStore;
 
         private string XmlUserfilePath => "UserList.xml";
-        private string XmlBookFilePath =>  "LibraryInventory.xml";
+        private string XmlBookFilePath => "LibraryInventory.xml";
 
-        decimal lateBookValue;
+        private decimal lateBookValue;
 
         public UserHome(PramStore pramStore)
         {
@@ -43,7 +43,6 @@ namespace LibraryAssignment
                         XmlNode value = xmlBookDoc.SelectSingleNode($"/library/book[title='{title.InnerText}']");
                         value = value.ChildNodes.Item(6);
                         lateBookValue = Convert.ToDecimal(value.InnerText);
-
                     }
                 }
             }
@@ -76,9 +75,7 @@ namespace LibraryAssignment
                         xmlUserDoc.Save(XmlUserfilePath);
                     }
                 }
-
             }
-
         }
 
         //Controls to Show and hide labels with further information on presented options.

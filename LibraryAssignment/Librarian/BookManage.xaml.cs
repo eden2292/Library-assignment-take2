@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Windows;
 using System.Xml;
@@ -42,6 +41,7 @@ namespace LibraryAssignment
             dgLibraryInventory.ItemsSource = dataset.Tables[0].DefaultView;
             dgLibraryInventory.Items.Refresh();
         }
+
         private void btnManAdd_Click(object sender, RoutedEventArgs e)
         {
             XmlDocument xmlDocBooks = new XmlDocument();
@@ -93,8 +93,8 @@ namespace LibraryAssignment
         {
             DataRowView row = dgLibraryInventory.SelectedItem as DataRowView;
 
-            if((row!=null))
-            { 
+            if ((row != null))
+            {
                 selectTitle = row.Row.ItemArray[0].ToString();
                 selectAuthor = row.Row.ItemArray[1].ToString();
                 selectYear = row.Row.ItemArray[2].ToString();
@@ -111,9 +111,7 @@ namespace LibraryAssignment
                 txtManIsbn.Text = selectIsbn;
                 txtManCategory.Text = selectCategory;
                 txtManValue.Text = selectValue;
-
             }
-         
         }
 
         private void btnManUpdate_Click(object sender, RoutedEventArgs e)
@@ -121,7 +119,7 @@ namespace LibraryAssignment
             XmlDocument xmlDocBooks = new XmlDocument();
             xmlDocBooks.Load(xmlBookFilePath);
 
-            XmlNode oldBook = xmlDocBooks.SelectSingleNode("//book[title ='" + selectTitle + "']"); 
+            XmlNode oldBook = xmlDocBooks.SelectSingleNode("//book[title ='" + selectTitle + "']");
 
             oldBook.ChildNodes.Item(0).InnerText = txtManTitle.Text;
             oldBook.ChildNodes.Item(1).InnerText = txtManAuthor.Text;

@@ -28,6 +28,5 @@
         <Image HorizontalAlignment="Left" Height="115" Margin="10,10,0,0" VerticalAlignment="Top" Width="119" Source="BookImage.png" />
         <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="168,364,0,0" VerticalAlignment="Top" Width="75" Click="btnCancel_Click" />
         <TextBox x:Name="txtManValue" HorizontalAlignment="Left" Height="23" Margin="123,304,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" />
-        
     </Grid>
 </Window>

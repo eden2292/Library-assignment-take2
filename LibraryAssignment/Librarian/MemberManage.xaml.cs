@@ -20,6 +20,7 @@ namespace LibraryAssignment
         }
 
         #region variables
+
         private String xmlUserFilePath => "UserList.xml";
 
         private String selectName;
@@ -80,7 +81,6 @@ namespace LibraryAssignment
             MessageBox.Show($"Success! \n user ID is {id} \n Write in before continuing");
 
             updateDatagrid();
-
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
@@ -107,7 +107,6 @@ namespace LibraryAssignment
                 txtManTelephone.Text = selectTelephone;
                 txtManFines.Text = selectFines;
                 txtManTag.Text = selectTag;
-
             }
         }
 
