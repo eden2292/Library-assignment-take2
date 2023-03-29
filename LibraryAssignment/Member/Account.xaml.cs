@@ -17,9 +17,6 @@ namespace LibraryAssignment
         private readonly PramStore _pramStore;
 
         private String XmlUserfilePath => "UserList.xml";
-        private String XmlBookFilePath => "LibraryInventory.xml";
-
-        private double lateBookValue;
 
         public Account(PramStore pramStore)
         {
@@ -36,63 +33,6 @@ namespace LibraryAssignment
             txtName.Text = _pramStore.CurrentUser.UserName;
             txtPhone.Text = _pramStore.CurrentUser.UserPhone;
             txtFines.Text = _pramStore.CurrentUser.UserFines;
-
-            XmlDocument xmlUserDoc = new XmlDocument();
-            XmlDocument xmlBookDoc = new XmlDocument(); 
-
-            xmlUserDoc.Load(XmlUserfilePath);
-            xmlBookDoc.Load(XmlBookFilePath);
-
-            XmlNodeList userNodes = xmlUserDoc.DocumentElement.SelectNodes("/catalog/User");
-            XmlNodeList bookNodes = xmlBookDoc.DocumentElement.SelectNodes("/library/book");
-
-            foreach(XmlNode xmlBookNode in bookNodes)
-            {
-                XmlNode title = xmlBookNode.SelectSingleNode("title");
-                XmlNode checkedOut = xmlUserDoc.SelectSingleNode($"/catalog/User[UserID ='{_pramStore.CurrentUser.UserId}']/CheckedOut/BookTitle");
-
-                if (title.InnerText == checkedOut.InnerText)
-                {
-                    XmlNode value = xmlBookDoc.SelectSingleNode($"/library/book[title='{title.InnerText}']");
-                    value = value.ChildNodes.Item(6);
-                    lateBookValue = Convert.ToDouble(value.InnerText);
-
-                }
-            }
-            
-            foreach(XmlNode xmlUserNode in userNodes)
-            {
-                XmlNode id = xmlUserNode.SelectSingleNode("UserID");
-                XmlNode dueDate = xmlUserNode.SelectSingleNode($"/catalog/User[UserID ='{_pramStore.CurrentUser.UserId}']/CheckedOut/DueDate");
-
-                if(dueDate != null)
-                {
-                    if (_pramStore.CurrentUser.UserId == id.InnerText && Convert.ToDateTime(dueDate.InnerText) < DateTime.Now)
-                    {
-                        DateTime due = Convert.ToDateTime(dueDate.InnerText);
-                        DateTime today = DateTime.Now.Date;
-
-                        TimeSpan daysLate = today.Subtract(due);
-
-                        double days = daysLate.TotalDays;
-                        double minusGrace = days - 7;
-
-                        double forCalc = lateBookValue / 100;
-
-                        double fine = forCalc * (minusGrace / 7);
-
-                        XmlNode parentNode = xmlUserNode.SelectSingleNode($"/catalog/User[UserID ='{_pramStore.CurrentUser.UserId}']");
-                        XmlNode Fines = xmlUserDoc.CreateElement("Fines");
-
-                        Fines.InnerText = Convert.ToString(fine);
-                        
-                        parentNode.AppendChild(Fines);
-
-                        xmlUserDoc.Save(XmlUserfilePath);
-
-                    }
-                }
-            }
 
             //Sets the datasource for the datagrid to be the dataset - tables[1] to display the child nodes of the checked out node (one layer deeper)          
             DataView dv = dataSet.Tables[1].DefaultView;

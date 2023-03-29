@@ -1,5 +1,7 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Input;
+using System.Xml;
 
 namespace LibraryAssignment
 {
@@ -10,10 +12,73 @@ namespace LibraryAssignment
     {
         private PramStore _pramStore;
 
+        private string XmlUserfilePath => "UserList.xml";
+        private string XmlBookFilePath =>  "LibraryInventory.xml";
+
+        decimal lateBookValue;
+
         public UserHome(PramStore pramStore)
         {
             _pramStore = pramStore;
             InitializeComponent();
+
+            XmlDocument xmlUserDoc = new XmlDocument();
+            XmlDocument xmlBookDoc = new XmlDocument();
+
+            xmlUserDoc.Load(XmlUserfilePath);
+            xmlBookDoc.Load(XmlBookFilePath);
+
+            XmlNodeList userNodes = xmlUserDoc.DocumentElement.SelectNodes("/catalog/User");
+            XmlNodeList bookNodes = xmlBookDoc.DocumentElement.SelectNodes("/library/book");
+
+            foreach (XmlNode xmlBookNode in bookNodes)
+            {
+                XmlNode title = xmlBookNode.SelectSingleNode("title");
+                XmlNode checkedOut = xmlUserDoc.SelectSingleNode($"/catalog/User[UserID ='{_pramStore.CurrentUser.UserId}']/CheckedOut/BookTitle");
+
+                if (checkedOut != null)
+                {
+                    if (title.InnerText == checkedOut.InnerText)
+                    {
+                        XmlNode value = xmlBookDoc.SelectSingleNode($"/library/book[title='{title.InnerText}']");
+                        value = value.ChildNodes.Item(6);
+                        lateBookValue = Convert.ToDecimal(value.InnerText);
+
+                    }
+                }
+            }
+
+            foreach (XmlNode xmlUserNode in userNodes)
+            {
+                XmlNode id = xmlUserNode.SelectSingleNode("UserID");
+                XmlNode dueDate = xmlUserNode.SelectSingleNode($"/catalog/User[UserID ='{_pramStore.CurrentUser.UserId}']/CheckedOut/DueDate");
+
+                if (dueDate != null)
+                {
+                    if (_pramStore.CurrentUser.UserId == id.InnerText && Convert.ToDateTime(dueDate.InnerText) < DateTime.Now)
+                    {
+                        DateTime due = Convert.ToDateTime(dueDate.InnerText);
+                        DateTime today = DateTime.Now.Date;
+
+                        TimeSpan daysLate = today.Subtract(due);
+
+                        decimal days = Convert.ToDecimal(daysLate.TotalDays);
+                        decimal minusGrace = days - 7;
+
+                        decimal forCalc = lateBookValue / 100;
+
+                        decimal fine = forCalc * (minusGrace / 7);
+
+                        XmlNode Fines = xmlUserNode.SelectSingleNode($"/catalog/User[UserID ='{_pramStore.CurrentUser.UserId}']/Fines");
+
+                        Fines.InnerText = Convert.ToString(fine);
+
+                        xmlUserDoc.Save(XmlUserfilePath);
+                    }
+                }
+
+            }
+
         }
 
         //Controls to Show and hide labels with further information on presented options.

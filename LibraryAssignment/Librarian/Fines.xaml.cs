@@ -45,7 +45,7 @@ namespace LibraryAssignment.Librarian
             {
                 selectEmail = row.Row.ItemArray[2].ToString();
                 selectName = row.Row.ItemArray[1].ToString();
-                selectFine = row.Row.ItemArray[5].ToString();
+                selectFine = row.Row.ItemArray[7].ToString();
 
                 txtUserEmail.Text = selectEmail;
 
