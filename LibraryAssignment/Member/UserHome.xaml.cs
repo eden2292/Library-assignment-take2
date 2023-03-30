@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Input;
 using System.Xml;
+using System.Globalization;
 
 namespace LibraryAssignment
 {
@@ -73,6 +74,8 @@ namespace LibraryAssignment
                         Fines.InnerText = Convert.ToString(fine);
 
                         xmlUserDoc.Save(XmlUserfilePath);
+
+                        _pramStore.CurrentUser.UserFines = fine.ToString("C", CultureInfo.CurrentCulture);
                     }
                 }
             }
