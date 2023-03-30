@@ -23,9 +23,10 @@ namespace LibraryAssignment
 
         #endregion variables
 
-        public Search(PramStore _pramStore)
+        public Search(PramStore pramStore)
         {
             InitializeComponent();
+            _pramStore = pramStore;
             currentUserId = _pramStore.CurrentUser.UserId;
             DataSet dataSet = new DataSet();
             //Read the xml file into the dataset

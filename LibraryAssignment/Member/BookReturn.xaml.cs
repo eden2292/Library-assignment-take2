@@ -85,14 +85,12 @@ namespace LibraryAssignment
             //loop through each user in the xml node list and check if the title of a book they have checked out matches the previously gathered title
             foreach (XmlNode userNode in userNodes)
             {
-                XmlNode bookTitle = userNode.SelectSingleNode("/catalog/User/CheckedOut/BookTitle");
-                XmlNode dueDate = userNode.SelectSingleNode("/catalog/User/CheckedOut/DueDate");
+                XmlNode book = userNode.SelectSingleNode($"/catalog/User['{_pramStore.CurrentUser.UserId}']/CheckedOut/Book");
 
                 //remove the nodes underneath "checkedout" - note removal of the checked out node itself will break the pramstore.
-                if (bookTitle != null && bookTitle.InnerText == title)
+                if (book != null && book.SelectSingleNode("BookTitle").InnerText == title)
                 {
-                    bookTitle.ParentNode.RemoveChild(bookTitle);
-                    dueDate.ParentNode.RemoveChild(dueDate);
+                    book.ParentNode.RemoveChild(book);
                 }
             }
             //Save the files

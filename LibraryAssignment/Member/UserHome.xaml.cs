@@ -35,7 +35,7 @@ namespace LibraryAssignment
             foreach (XmlNode xmlBookNode in bookNodes)
             {
                 XmlNode title = xmlBookNode.SelectSingleNode("title");
-                XmlNode checkedOut = xmlUserDoc.SelectSingleNode($"/catalog/User[UserID ='{_pramStore.CurrentUser.UserId}']/CheckedOut/BookTitle");
+                XmlNode checkedOut = xmlUserDoc.SelectSingleNode($"/catalog/User[UserID ='{_pramStore.CurrentUser.UserId}']/CheckedOut/Book[BookTitle ='{title.InnerText}']/BookTitle");
 
                 if (checkedOut != null)
                 {

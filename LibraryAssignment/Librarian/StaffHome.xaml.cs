@@ -79,13 +79,6 @@ namespace LibraryAssignment
             memberManage.Show();
         }
 
-        private void btnReports_Click(object sender, RoutedEventArgs e)
-        {
-            Close();
-            AllReports reports = new AllReports();
-            reports.Show();
-        }
-
         private void btnFines_Click(object sender, RoutedEventArgs e)
         {
             Close();

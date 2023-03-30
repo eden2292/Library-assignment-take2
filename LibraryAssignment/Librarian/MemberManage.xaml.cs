@@ -99,8 +99,8 @@ namespace LibraryAssignment
                 selectName = row.Row.ItemArray[1].ToString();
                 selectEmail = row.Row.ItemArray[2].ToString();
                 selectTelephone = row.Row.ItemArray[3].ToString();
+                selectFines = row.Row.ItemArray[5].ToString();
                 selectTag = row.Row.ItemArray[6].ToString();
-                selectFines = row.Row.ItemArray[7].ToString();
 
                 txtManName.Text = selectName;
                 txtManEmail.Text = selectEmail;
@@ -116,13 +116,12 @@ namespace LibraryAssignment
             xmlDocUser.Load(xmlUserFilePath);
 
             XmlNode oldUser = xmlDocUser.SelectSingleNode("//User[Name = '" + selectName + "']");
-            XmlNode fines = xmlDocUser.SelectSingleNode("//User[Name = '" + selectName + "']/Fines");
+            //XmlNode fines = xmlDocUser.SelectSingleNode("//User[Name = '" + selectName + "']/Fines");
             oldUser.ChildNodes.Item(1).InnerText = txtManName.Text;
             oldUser.ChildNodes.Item(2).InnerText = txtManEmail.Text;
             oldUser.ChildNodes.Item(3).InnerText = txtManTelephone.Text;
             oldUser.ChildNodes.Item(5).InnerText = txtManFines.Text;
             oldUser.ChildNodes.Item(6).InnerText = txtManTag.Text;
-            oldUser.ChildNodes.Item(7).InnerText = txtManFines.Text;
 
             xmlDocUser.Save(xmlUserFilePath);
             MessageBox.Show("Success!");

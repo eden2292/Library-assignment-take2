@@ -91,13 +91,19 @@ namespace LibraryAssignment
                     {
                         if (_pramStore.CurrentUser.UserId == userNode.SelectSingleNode("UserID").InnerText)
                         {
+                            XmlElement bookElem = xmlUserDoc.CreateElement("Book");
                             XmlElement newBookElem = xmlUserDoc.CreateElement("BookTitle");
                             XmlElement dueDateElem = xmlUserDoc.CreateElement("DueDate");
+
                             newBookElem.InnerText = bookNode.SelectSingleNode("title").InnerText;
                             dueDateElem.InnerText = bookNode.SelectSingleNode("checkedOut").InnerText;
 
-                            userNode.SelectSingleNode("CheckedOut").AppendChild(newBookElem);
-                            userNode.SelectSingleNode("CheckedOut").AppendChild(dueDateElem);
+                            bookElem.AppendChild(newBookElem);
+                            bookElem.AppendChild(dueDateElem);
+
+                            XmlNode parent = xmlUserDoc.SelectSingleNode($"/catalog/User['{_pramStore.CurrentUser.UserId}']/CheckedOut");
+
+                            parent.AppendChild(bookElem);
 
                             if (userNode.SelectSingleNode("Reserved") != null)
                             {

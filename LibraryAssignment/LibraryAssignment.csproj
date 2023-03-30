@@ -55,9 +55,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Librarian\AllReports.xaml.cs">
-      <DependentUpon>AllReports.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Librarian\Fines.xaml.cs">
       <DependentUpon>Fines.xaml</DependentUpon>
     </Compile>
@@ -88,10 +85,6 @@
     <Compile Include="Member\UserHome.xaml.cs">
       <DependentUpon>UserHome.xaml</DependentUpon>
     </Compile>
-    <Page Include="Librarian\AllReports.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Librarian\Fines.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

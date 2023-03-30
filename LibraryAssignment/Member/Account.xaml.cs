@@ -2,6 +2,9 @@
 using System.Data;
 using System.Text;
 using System.Windows;
+using System.Xml;
+using System.Linq;
+using System.Xml.Linq;
 
 namespace LibraryAssignment
 {
@@ -17,15 +20,11 @@ namespace LibraryAssignment
 
         private String XmlUserfilePath => "UserList.xml";
 
+
         public Account(PramStore pramStore)
         {
             _pramStore = pramStore;
             InitializeComponent();
-
-            //create a data set that holds the information from the xml file to be displayed in a human readable format.
-            DataSet dataSet = new DataSet();
-            dataSet.ReadXml(XmlUserfilePath);
-            dgBookOnLoan.ItemsSource = dataSet.Tables[0].DefaultView;
 
             //pull information on the user from the pramstore to enter into the text boxes
             txtEmail.Text = _pramStore.CurrentUser.UserEmail;
@@ -33,18 +32,15 @@ namespace LibraryAssignment
             txtPhone.Text = _pramStore.CurrentUser.UserPhone;
             txtFines.Text = _pramStore.CurrentUser.UserFines;
 
-            //Sets the datasource for the datagrid to be the dataset - tables[1] to display the child nodes of the checked out node (one layer deeper)          
-            DataView dv = dataSet.Tables[1].DefaultView;
-            StringBuilder sb = new StringBuilder();
+            XDocument xDoc = XDocument.Load(XmlUserfilePath);
 
-            //display information in the datagrid, filtered by the name of the user to only display their books.
-            foreach (DataColumn column in dv.Table.Columns)
-            {
-                sb.AppendFormat("[{0}] Like '%{1}%' OR ", column.ColumnName, _pramStore.CurrentUser.UserId);
-            }
-            sb.Remove(sb.Length - 3, 3);
-            dgBookOnLoan.ItemsSource = dv;
+            XElement User = xDoc.Root.Elements("User").Where(x => x.Element("UserID").Value == _pramStore.CurrentUser.UserId).SingleOrDefault();
+
+            var books = User.Element("CheckedOut").Elements("Book").ToList().Select(x => new { BookTitle = x.Element("BookTitle").Value, DueBackDate = x.Element("DueDate").Value }).ToList();
+
+            dgBookOnLoan.ItemsSource = books;
             dgBookOnLoan.Items.Refresh();
+
         }
 
         /// <summary>
