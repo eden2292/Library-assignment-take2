@@ -31,53 +31,62 @@ namespace LibraryAssignment
 
             XmlNodeList userNodes = xmlUserDoc.DocumentElement.SelectNodes("/catalog/User");
             XmlNodeList bookNodes = xmlBookDoc.DocumentElement.SelectNodes("/library/book");
+
+            decimal finesTotal = 0;
             
-            //find value of book from book xml if the user has a book with a late due date. Used to calculate fines. 
-            foreach (XmlNode xmlBookNode in bookNodes)
-            {
-                XmlNode title = xmlBookNode.SelectSingleNode("title");
-                XmlNode checkedOut = xmlUserDoc.SelectSingleNode($"/catalog/User[UserID ='{_pramStore.CurrentUser.UserId}']/CheckedOut/Book[BookTitle ='{title.InnerText}']/BookTitle");
-
-                if (checkedOut != null)
-                {
-                    if (title.InnerText == checkedOut.InnerText)
-                    {
-                        XmlNode value = xmlBookDoc.SelectSingleNode($"/library/book[title='{title.InnerText}']");
-                        value = value.ChildNodes.Item(6);
-                        lateBookValue = decimal.Parse(value.InnerText);
-                    }
-                }
-            }
-
             foreach (XmlNode xmlUserNode in userNodes)
             {
                 XmlNode id = xmlUserNode.SelectSingleNode("UserID");
-                XmlNode dueDate = xmlUserNode.SelectSingleNode($"/catalog/User[UserID ='{_pramStore.CurrentUser.UserId}']/CheckedOut/Book/DueDate");
+                
+                XmlNodeList checkedOutBookNodes = xmlUserNode.SelectNodes($"/catalog/User[UserID ='{_pramStore.CurrentUser.UserId}']/CheckedOut/Book");
 
-                if (dueDate != null)
+                //checks if the user matches the logged in user.
+                if (_pramStore.CurrentUser.UserId == id.InnerText)
                 {
-                    if (_pramStore.CurrentUser.UserId == id.InnerText && Convert.ToDateTime(dueDate.InnerText) < DateTime.Now)
+                    //starts the loop though checked out books.
+                    foreach (XmlNode checkedOutBookNode in checkedOutBookNodes)
                     {
-                        DateTime due = Convert.ToDateTime(dueDate.InnerText);
-                        DateTime today = DateTime.Now.Date;
+                        //gets the title of the checked out book
+                        XmlNode title = checkedOutBookNode.SelectSingleNode("BookTitle");
+                        //gets the dueDate and converts it to type DateTime
+                        DateTime dueDate = Convert.ToDateTime(checkedOutBookNode.SelectSingleNode("DueDate").InnerText);
+                        
+                        //starts the loop though all books
+                        foreach (XmlNode xmlBookNode in bookNodes)
+                        {
+                            //checks if the current book in all books is the same as the current checked out book.
+                            if (title.InnerText == xmlBookNode.SelectSingleNode("title").InnerText)
+                            {
+                                //if the current book matches the current checked out book get its value node
+                                XmlNode value = xmlBookNode.ChildNodes.Item(6);
+                                lateBookValue = decimal.Parse(value.InnerText);
 
-                        TimeSpan daysLate = today.Subtract(due);
+                                DateTime today = DateTime.Now.Date;
 
-                        decimal days = Convert.ToDecimal(daysLate.TotalDays);
-                        decimal minusGrace = days - 7;
+                                TimeSpan daysLate = today.Subtract(dueDate);
 
-                        decimal forCalc = lateBookValue / 100;
+                                decimal days = Convert.ToDecimal(daysLate.TotalDays);
+                                decimal minusGrace = days - 7;
 
-                        decimal fine = forCalc * (minusGrace / 7);
+                                decimal forCalc = lateBookValue / 100;
 
-                        XmlNode Fines = xmlUserNode.SelectSingleNode($"/catalog/User[UserID ='{_pramStore.CurrentUser.UserId}']/Fines");
+                                decimal fine = forCalc * (minusGrace / 7);
 
-                        Fines.InnerText = Convert.ToString(fine);
+                                finesTotal += fine;
 
-                        xmlUserDoc.Save(XmlUserfilePath);
 
-                        _pramStore.CurrentUser.UserFines = fine.ToString("C", CultureInfo.CurrentCulture);
+                            }
+                        }
                     }
+                                
+                    XmlNode Fines = xmlUserNode.SelectSingleNode($"/catalog/User[UserID ='{_pramStore.CurrentUser.UserId}']/Fines");
+            
+                    Fines.InnerText = Convert.ToString(finesTotal);
+            
+                    xmlUserDoc.Save(XmlUserfilePath);
+            
+                    _pramStore.CurrentUser.UserFines = finesTotal.ToString("C", CultureInfo.CurrentCulture);
+                    
                 }
             }
         }
