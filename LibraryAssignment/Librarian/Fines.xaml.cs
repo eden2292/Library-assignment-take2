@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Globalization;
 using System.Net.Mail;
 using System.Windows;
 using System.Windows.Controls;
@@ -39,17 +40,17 @@ namespace LibraryAssignment.Librarian
             {
                 selectEmail = row.Row.ItemArray[2].ToString();
                 selectName = row.Row.ItemArray[1].ToString();
-                selectFine = row.Row.ItemArray[5].ToString();
+                selectFine = Decimal.Parse(row.Row.ItemArray[7].ToString()).ToString("C2");
 
                 txtUserEmail.Text = selectEmail;
 
-                if (selectFine != "0")
+                if (selectFine != "£0.00")
                 {
                     txtEmailTemplate.Text = $"Dear {selectName}, \n We are writing to inform you that you have books that are overdue. \n Please note that your current fine total is {selectFine}. " +
                         $"\n please endeavour to return these items to the library as soon as possible, or you will incur further charges. \n Regards, The library team";
                     btnSend.IsEnabled = true;
                 }
-                else if (selectFine == "0")
+                else if (selectFine == "£0.00")
                 {
                     txtEmailTemplate.Text = "This user does not have a fine. Do not send notice.";
                     btnSend.IsEnabled = false;
