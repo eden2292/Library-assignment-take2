@@ -20,7 +20,7 @@
 
         <TextBox x:Name="txtUserEmail" HorizontalAlignment="Left" Height="23" Margin="25,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="281" />
         <TextBox x:Name="txtEmailTemplate" HorizontalAlignment="Left" Height="152" Margin="25,171,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="281" />
-        <Button x:Name="btnSend" Content="Send" HorizontalAlignment="Left" Margin="54,342,0,0" VerticalAlignment="Top" Width="104" Height="42" Click="btnSend_Click" />
+        <Button x:Name="btnSend" Content="Send" HorizontalAlignment="Left" Margin="54,342,0,0" VerticalAlignment="Top" Width="104" Height="42" Click="btnSend_Click" IsEnabled="False"/>
         <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="174,342,0,0" VerticalAlignment="Top" Width="104" Height="42" Click="btnCancel_Click" />
     </Grid>
 </Window>
