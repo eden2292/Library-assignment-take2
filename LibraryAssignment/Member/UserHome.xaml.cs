@@ -31,7 +31,8 @@ namespace LibraryAssignment
 
             XmlNodeList userNodes = xmlUserDoc.DocumentElement.SelectNodes("/catalog/User");
             XmlNodeList bookNodes = xmlBookDoc.DocumentElement.SelectNodes("/library/book");
-
+            
+            //find value of book from book xml if the user has a book with a late due date. Used to calculate fines. 
             foreach (XmlNode xmlBookNode in bookNodes)
             {
                 XmlNode title = xmlBookNode.SelectSingleNode("title");
@@ -43,7 +44,7 @@ namespace LibraryAssignment
                     {
                         XmlNode value = xmlBookDoc.SelectSingleNode($"/library/book[title='{title.InnerText}']");
                         value = value.ChildNodes.Item(6);
-                        lateBookValue = Convert.ToDecimal(value.InnerText);
+                        lateBookValue = decimal.Parse(value.InnerText);
                     }
                 }
             }
@@ -51,7 +52,7 @@ namespace LibraryAssignment
             foreach (XmlNode xmlUserNode in userNodes)
             {
                 XmlNode id = xmlUserNode.SelectSingleNode("UserID");
-                XmlNode dueDate = xmlUserNode.SelectSingleNode($"/catalog/User[UserID ='{_pramStore.CurrentUser.UserId}']/CheckedOut/DueDate");
+                XmlNode dueDate = xmlUserNode.SelectSingleNode($"/catalog/User[UserID ='{_pramStore.CurrentUser.UserId}']/CheckedOut/Book/DueDate");
 
                 if (dueDate != null)
                 {
