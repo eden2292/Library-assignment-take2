@@ -90,34 +90,41 @@ namespace LibraryAssignment
             XmlNodeList xmlUserNodeList = xmlUserDoc.DocumentElement.SelectNodes("/catalog/User");
             XmlNodeList xmlBookNodeList = xmlBookDoc.DocumentElement.SelectNodes("/library/book");
 
-            foreach (XmlNode userNode in xmlUserNodeList)
+            if (dgResults.SelectedItem != null)
             {
-                XmlNode user = userNode.SelectSingleNode("UserID");
-
-                if (currentUserId == user.InnerText)
+                foreach (XmlNode userNode in xmlUserNodeList)
                 {
-                    XmlElement searchTitle = xmlUserDoc.CreateElement("Reserved");
-                    searchTitle.InnerText = selectTitle;
+                    XmlNode user = userNode.SelectSingleNode("UserID");
 
-                    userNode.AppendChild(searchTitle);
-                    userNode.OwnerDocument.Save(xmlUserFilePath);
+                    if (currentUserId == user.InnerText)
+                    {
+                        XmlElement searchTitle = xmlUserDoc.CreateElement("Reserved");
+                        searchTitle.InnerText = selectTitle;
 
-                    MessageBox.Show($"successfully reserved \n {selectTitle}");
+                        userNode.AppendChild(searchTitle);
+                        userNode.OwnerDocument.Save(xmlUserFilePath);
+
+                        MessageBox.Show($"successfully reserved \n {selectTitle}");
+                    }
+                }
+
+                foreach (XmlNode xmlBookNode in xmlBookNodeList)
+                {
+                    XmlNode book = xmlBookNode.SelectSingleNode("bookId");
+
+                    if (book.InnerText == selectId)
+                    {
+                        XmlElement searchId = xmlBookDoc.CreateElement("reserved");
+                        searchId.InnerText = currentUserId;
+
+                        xmlBookNode.AppendChild(searchId);
+                        xmlBookNode.OwnerDocument.Save(xmlBookFilePath);
+                    }
                 }
             }
-
-            foreach (XmlNode xmlBookNode in xmlBookNodeList)
+            else if(dgResults.SelectedItem == null)
             {
-                XmlNode book = xmlBookNode.SelectSingleNode("bookId");
-
-                if (book.InnerText == selectId)
-                {
-                    XmlElement searchId = xmlBookDoc.CreateElement("reserved");
-                    searchId.InnerText = currentUserId;
-
-                    xmlBookNode.AppendChild(searchId);
-                    xmlBookNode.OwnerDocument.Save(xmlBookFilePath);
-                }
+                MessageBox.Show("no book selected");
             }
         }
     }

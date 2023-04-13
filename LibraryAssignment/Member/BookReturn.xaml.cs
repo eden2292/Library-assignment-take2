@@ -120,11 +120,15 @@ namespace LibraryAssignment
                     MessageBox.Show($"Your new due date is \n {newDate}");
                     bookFound = true;
                 }
-                if (!bookFound)
-                {
-                    MessageBox.Show("An error has occured \n please contact the librarian");
-                }
+
                 xmlDocument.Save(xmlBookFilePath);
+
+            }
+
+
+            if (bookFound != true)
+            {
+                MessageBox.Show("An error has occured \n please contact the librarian");
             }
         }
 

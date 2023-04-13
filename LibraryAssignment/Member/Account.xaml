@@ -18,7 +18,6 @@
         <TextBlock HorizontalAlignment="Left" Margin="136,286,0,0" TextWrapping="Wrap" Text="Books on loan:" VerticalAlignment="Top" Height="23" FontSize="20" FontFamily="Global User Interface" Foreground="White" />
         <TextBlock HorizontalAlignment="Left" Margin="105,246,0,0" TextWrapping="Wrap" Text="Outstanding fines:" VerticalAlignment="Top" Height="23" FontSize="20" FontFamily="Global User Interface" Foreground="White" />
         <Image HorizontalAlignment="Left" Height="115" Margin="10,10,0,0" VerticalAlignment="Top" Width="119" Source="BookImage.png" />
-        <Button x:Name="btnPayPage" Content="Pay fine" HorizontalAlignment="Left" Margin="570,122,0,0" VerticalAlignment="Top" Width="120" Height="50" />
         <TextBlock Margin="259,31,245,0" TextWrapping="Wrap" Text="Account" VerticalAlignment="Top" FontFamily="Global User Interface" FontSize="72" Foreground="White" />
         <DataGrid x:Name="dgBookOnLoan" HorizontalAlignment="Left" Height="100" Margin="271,286,0,0" VerticalAlignment="Top" Width="419" />
     </Grid>
