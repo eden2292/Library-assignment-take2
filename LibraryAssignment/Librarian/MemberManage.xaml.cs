@@ -61,7 +61,7 @@ namespace LibraryAssignment
             emailNode.InnerText = txtManEmail.Text;
             telephoneNode.InnerText = txtManTelephone.Text;
             checkedoutNode.InnerText = "";
-            finesNode.InnerText = "";
+            finesNode.InnerText = "0";
             tagNode.InnerText = txtManTag.Text;
 
             parentNode.AppendChild(userIdNode);
@@ -99,7 +99,7 @@ namespace LibraryAssignment
                 selectName = row.Row.ItemArray[1].ToString();
                 selectEmail = row.Row.ItemArray[2].ToString();
                 selectTelephone = row.Row.ItemArray[3].ToString();
-                selectFines = row.Row.ItemArray[5].ToString();
+                selectFines = row.Row.ItemArray[7].ToString();
                 selectTag = row.Row.ItemArray[6].ToString();
 
                 txtManName.Text = selectName;
