@@ -67,10 +67,12 @@ namespace LibraryAssignment
                     XmlNode tag = xmlUserNode.SelectSingleNode("Tag");
 
                     XmlNode fines = xmlUserNode.SelectSingleNode("Fines");
+                    //checking that the fines node is not null to avoid null reference exceptions. 
                     if (fines != null)
                     {
                         fine = fines.InnerText;
                     }
+                    //store information in the parameter store to be used across the programme. 
                     _pramStore.CurrentUser = new UserDetails
                     {
                         UserName = xmlUserNode.SelectSingleNode("Name").InnerText,

@@ -32,12 +32,13 @@ namespace LibraryAssignment
             txtPhone.Text = _pramStore.CurrentUser.UserPhone;
             txtFines.Text = _pramStore.CurrentUser.UserFines;
 
+            //load in the xml document as an xdoc to enable better filtering for the datagrid
             XDocument xDoc = XDocument.Load(XmlUserfilePath);
-
+            //get the information to be included in the datagrid. 
             XElement User = xDoc.Root.Elements("User").Where(x => x.Element("UserID").Value == _pramStore.CurrentUser.UserId).SingleOrDefault();
-
+            //find the checked out book nodes for this specific user and store them to the books variable
             var books = User.Element("CheckedOut").Elements("Book").ToList().Select(x => new { BookTitle = x.Element("BookTitle").Value, DueBackDate = x.Element("DueDate").Value }).ToList();
-
+            //load the items from the books variable into the datagrid, then update it. 
             dgBookOnLoan.ItemsSource = books;
             dgBookOnLoan.Items.Refresh();
 

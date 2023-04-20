@@ -78,7 +78,7 @@ namespace LibraryAssignment
             selectAuthor = row.Row.ItemArray[1].ToString();
             selectId = row.Row.ItemArray[6].ToString();
         }
-
+        #region reservation
         private void btnReserve_Click(object sender, RoutedEventArgs e)
         {
             XmlDocument xmlBookDoc = new XmlDocument();
@@ -89,7 +89,7 @@ namespace LibraryAssignment
 
             XmlNodeList xmlUserNodeList = xmlUserDoc.DocumentElement.SelectNodes("/catalog/User");
             XmlNodeList xmlBookNodeList = xmlBookDoc.DocumentElement.SelectNodes("/library/book");
-
+            //if statement to run the code provided the selection is not null - avoid null reference exceptions. 
             if (dgResults.SelectedItem != null)
             {
                 foreach (XmlNode userNode in xmlUserNodeList)
@@ -98,12 +98,13 @@ namespace LibraryAssignment
 
                     if (currentUserId == user.InnerText)
                     {
+                        //add reservation node to the user that contains the title of the book. 
                         XmlElement searchTitle = xmlUserDoc.CreateElement("Reserved");
                         searchTitle.InnerText = selectTitle;
 
                         userNode.AppendChild(searchTitle);
                         userNode.OwnerDocument.Save(xmlUserFilePath);
-
+                        //show the book that the user has reserved. 
                         MessageBox.Show($"successfully reserved \n {selectTitle}");
                     }
                 }
@@ -114,6 +115,7 @@ namespace LibraryAssignment
 
                     if (book.InnerText == selectId)
                     {
+                        //add a node to the reserved book that holds the user ID
                         XmlElement searchId = xmlBookDoc.CreateElement("reserved");
                         searchId.InnerText = currentUserId;
 
@@ -127,5 +129,6 @@ namespace LibraryAssignment
                 MessageBox.Show("no book selected");
             }
         }
+        #endregion
     }
 }

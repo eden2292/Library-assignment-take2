@@ -15,9 +15,12 @@ namespace LibraryAssignment
         public String currentUserId;
         public String currentUserBooks;
         public String title;
+        //boolean that switches if book is found in the xml file. 
         private bool bookFound = false;
         private String xmlBookFilePath => "LibraryInventory.xml";
         private String xmlUserFilePath => "UserList.xml";
+
+        //datetime variable that is used to generate new return date. 
         private string newDate = DateTime.Now.AddMonths(1).ToShortDateString();
 
         #endregion variables
